@@ -21,7 +21,7 @@ class GalleryController extends Controller
     public function index()
     {
         return view('admin.gallery.index',[
-            'gallery'=>Gallery::paginate(6),
+            'gallery'=>Gallery::paginate(8),
             'category'=>GalleryCategory::all()
         ]);
     }
@@ -147,5 +147,12 @@ class GalleryController extends Controller
         }
         
         return redirect()->route('gallery.index')->with('success','Berhasil Menghapus Gallery!');
+    }
+
+    public function category($id){
+        return view('admin.gallery.index',[
+            'gallery'=>Gallery::where('gallery_categories_id',$id)->paginate(8),
+            'category'=>GalleryCategory::all()
+        ]);
     }
 }

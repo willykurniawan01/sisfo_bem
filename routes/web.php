@@ -29,6 +29,9 @@ Route::prefix('administrator')->namespace('Admin')->middleware(['auth','web'])->
     Route::resource('kehadiran', 'KehadiranController');
     Route::resource('carousel', 'CarouselController');
     Route::resource('gallery', 'GalleryController');
+    Route::get('/gallery/category/{id}', 'GalleryController@category')->name('gallery.category');
+
+
     Route::resource('post', 'PostController');
     Route::resource('gallery_category', 'GalleryCategoryController');
     

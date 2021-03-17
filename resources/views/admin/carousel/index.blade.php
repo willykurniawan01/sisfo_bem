@@ -7,30 +7,30 @@
 
           <div class="row">
             <div class="col-3">
-              <a href="{{ route('carousel.create') }}" class="btn btn-primary">Tambah</a>
+              <a href="{{ route('carousel.create') }}" class="btn btn-sm btn-primary">Tambah</a>
             </div>
           </div>
         
           <div class="row mt-3">
-              <div class="col-12 d-flex">
+            @foreach ($carousel as $item)
 
-                @foreach ($carousel as $item)
+              <div class="col-12 col-md-3">
+
                 <div class="card mr-3" >
-                  <img src="{{ $item->picture }}" style="height:300px; width:300px;" class="card-img-top" alt="...">
+                  <img src="{{ $item->picture }}" style="height:200px;" class="card-img-top img-fluid" alt="...">
                   <div class="card-body">
                     <form method="POST" class="d-flex justify-content-around" action="{{ route('carousel.destroy',$item->id) }}">
                       @csrf
                       @method('delete')
-                      <a href="#" class="btn btn-primary">Ubah</a>
-                      <button class="btn btn-danger">Hapus</button>
+                      <a href="#" class="badge badge-primary">Ubah</a>
+                      <button class="badge btn btn-danger">Hapus</button>
                     </form>
                   </div>
                 </div>
-                @endforeach
 
-                
-               </div>
-
+              </div>
+              
+              @endforeach
           </div>
           
         </div>

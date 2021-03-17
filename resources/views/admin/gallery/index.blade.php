@@ -5,31 +5,63 @@
         <div class="container-fluid">
           <!-- Page Heading -->
 
-          <div class="row">
-            <div class="col-3">
-              <a href="{{ route('gallery.create') }}" class="btn btn-primary">Tambah</a>
-            </div>
-          </div>
-          
-        
           <div class="row mt-3">
-              <div class="col-md-8">
+            <div class="col-12 col-md-3 mb-3 mb-md-0">
+              <div class="card" style="width: 100%;">
+                <div class="card-header">
+                  Kategori Gallery
+                </div>
+                <ul class="list-group list-group-flush">
+                  @forelse ($category as $item)
+                  <li class="list-group-item d-flex justify-content-between">
+                    {{ $item->nama }} 
+                    <form method="POST" action="{{ route('gallery_category.destroy',$item->id) }}" class="form-inline">
+                      @csrf
+                      @method('delete')
+                      <button class="badge btn btn-sm btn-danger">Hapus</button>
+                  </form></li>
+                  @empty
+                  <li class="list-group-item text-center">Tidak ada kategori</li>
+                  @endforelse
+                  <li class="list-group-item"><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" >Tambah</button></li>
+                </ul>
+              </div>
+            </div>
+
+
+              <div class="col-md-9">
+                <div class="row mb-3">
+                  <div class="col-12">
+                    <a href="{{ route('gallery.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
+                  </div>
+                </div>
+                
+                <div class="row mb-3">
+                  <div class="col-12">
+                    <a href="{{ route('gallery.index') }}" class="btn btn-sm btn-success mr-3">All</a>
+                    @foreach ($category as $item)
+                      <a href="{{ route('gallery.category',$item->id) }}" class="btn btn-sm btn-success mr-3">{{ $item->nama }}</a>
+                    @endforeach
+                  </div>
+                </div>
                 <div class="row">
-                  <div class="col-12 d-flex flex-wrap">
-                    @foreach ($gallery as $item)
+                  
+                  @foreach ($gallery as $item)
+                  <div class="col-6 col-md-3">
                     <div class="card mr-3 mb-3" >
-                      <img src="{{ $item->picture }}" style="height:200px; width:200px;" class="card-img-top" alt="...">
+                      <img src="{{ $item->picture }}" style="height:140px;" class="card-img-top img-fluid" alt="...">
                       <div class="card-body">
                         <form method="POST" class="d-flex justify-content-around" action="{{ route('gallery.destroy',$item->id) }}">
                           @csrf
                           @method('delete')
-                          <a href="#" class="btn btn-primary">Ubah</a>
-                          <button class="btn btn-danger" data-toggle="modal">Hapus</button>
+                          <a href="#" class="badge badge-primary">Ubah</a>
+                          <button class="badge btn btn-danger" data-toggle="modal">Hapus</button>
                         </form>
                       </div>
                     </div>
-                    @endforeach
                   </div>
+                  @endforeach
+
                 </div>
 
                
@@ -37,28 +69,6 @@
                   <div class="col-12">  
                     {{ $gallery->links() }}
                   </div>
-                </div>
-               </div>
-
-               <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                  <div class="card-header">
-                    Kategori Gallery
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    @forelse ($category as $item)
-                    <li class="list-group-item d-flex justify-content-between">
-                      {{ $item->nama }} 
-                      <form method="POST" action="{{ route('gallery_category.destroy',$item->id) }}" class="form-inline">
-                        @csrf
-                        @method('delete')
-                        <button class="btn btn-sm btn-danger">Hapus</button>
-                    </form></li>
-                    @empty
-                    <li class="list-group-item">Tidak ada kategori</li>
-                    @endforelse
-                    <li class="list-group-item"><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" >Tambah</button></li>
-                  </ul>
                 </div>
               </div>
 
