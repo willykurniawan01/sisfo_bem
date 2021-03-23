@@ -47,7 +47,7 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'picture'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'picture'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
             'gallery_categories_id'=>'required'
         ]);
 

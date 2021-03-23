@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->longText('isi');
             $table->string('picture');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('post_categories_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('post_categories_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

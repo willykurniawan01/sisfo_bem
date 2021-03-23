@@ -23,10 +23,6 @@ class HomeController extends Controller
     }
 
 
-    public function setting(){
-        return view('admin.setting.index');
-    }
-
     /**
      * Show the form for creating a new resource.
      *

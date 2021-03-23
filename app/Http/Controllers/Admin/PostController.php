@@ -8,6 +8,7 @@ use function PHPSTORM_META\map;
 
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use App\PostCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -22,7 +23,8 @@ class PostController extends Controller
     {
         
         return view('admin.post.index',[
-            'post'=>Post::all()
+            'post'=>Post::all(),
+            'category'=>PostCategory::all()
         ]);
     }
 
@@ -48,7 +50,7 @@ class PostController extends Controller
             'judul'=>'required|string',
             'isi'=>'required',
             'user_id'=>'required|numeric',
-            'picture'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'picture'=>'image|mimes:jpeg,png,jpg,gif,svg',
             'post_categories_id'=>'numeric',
         ]);
 

@@ -14,15 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::namespace('Home')->group(function () {
+    Route::get('/', 'HomeController@index');
+    Route::get('/gallery', 'HomeController@index');
 });
 
 Auth::routes();
 
 Route::prefix('administrator')->namespace('Admin')->middleware(['auth','web'])->group(function () {
     Route::get('/', 'HomeController@index')->name('admin.index');
-    Route::get('/setting', 'HomeController@setting')->name('admin.setting');
+
+    Route::get('/s/', 'SettingController@index')->name('setting.index');
+    
+    Route::get('/s/socialmedia', 'SettingController@socialmedia')->name('setting.socialmedia');
+    Route::post('/s/socialmedia/update', 'SettingController@socialmedia_update')->name('setting.socialmedia.update');
+
+    Route::get('/s/alamat', 'SettingController@alamat')->name('setting.alamat');
+    Route::post('/s/alamat/update', 'SettingController@alamat_update')->name('setting.alamat.update');
+
+    Route::get('/s/story', 'SettingController@story')->name('setting.story');
+    Route::post('/s/story/update', 'SettingController@story_update')->name('setting.story.update');
 
     Route::resource('anggota', 'AnggotaController');
     Route::resource('kegiatan', 'KegiatanController');

@@ -18,7 +18,7 @@
                     <form method="POST" action="{{ route('gallery_category.destroy',$item->id) }}" class="form-inline">
                       @csrf
                       @method('delete')
-                      <button class="badge btn btn-sm btn-danger">Hapus</button>
+                      <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                   </form></li>
                   @empty
                   <li class="list-group-item text-center">Tidak ada kategori</li>
@@ -47,15 +47,15 @@
                 <div class="row">
                   
                   @foreach ($gallery as $item)
-                  <div class="col-6 col-md-3">
+                  <div class="col-6 col-md-4 col-lg-3">
                     <div class="card mr-3 mb-3" >
                       <img src="{{ $item->picture }}" style="height:140px;" class="card-img-top img-fluid" alt="...">
                       <div class="card-body">
                         <form method="POST" class="d-flex justify-content-around" action="{{ route('gallery.destroy',$item->id) }}">
                           @csrf
                           @method('delete')
-                          <a href="#" class="badge badge-primary">Ubah</a>
-                          <button class="badge btn btn-danger" data-toggle="modal">Hapus</button>
+                          <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                          <button class="btn btn-danger" data-toggle="modal"><i class="fas fa-trash-alt"></i></button>
                         </form>
                       </div>
                     </div>

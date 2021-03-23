@@ -9,7 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin | @yield('title')</title>
+    <title>BEM SAR Admin | @yield('title')</title>
+
+    <link rel="icon" href="{{ asset('images/logo.png') }}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -21,6 +23,7 @@
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     @stack('table-style')
+    @stack('ckeditor')
 
 </head>
 
@@ -94,6 +97,12 @@
                 <a class="nav-link" href="{{ route('anggota.index') }}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Anggota</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('setting.index') }}">
+                    <i class="fas fa-cog"></i>
+                    <span>Pengaturan</span></a>
             </li>
 
           
@@ -185,7 +194,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('setting.index') }}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Pengaturan
                                 </a>
@@ -208,7 +217,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white mt-4">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Hidev {{ date('Y') }}</span>
@@ -263,6 +272,7 @@
 
     @include('sweetalert::alert')
     @stack('table-script')
+    @stack('ckeditor-script')
 
 </body>
 
