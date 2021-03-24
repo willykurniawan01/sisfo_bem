@@ -35,7 +35,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        return view('admin.post.create',[
+            'category'=>PostCategory::all()
+        ]);
     }
 
     /**
@@ -49,7 +51,6 @@ class PostController extends Controller
         $request->validate([
             'judul'=>'required|string',
             'isi'=>'required',
-            'user_id'=>'required|numeric',
             'picture'=>'image|mimes:jpeg,png,jpg,gif,svg',
             'post_categories_id'=>'numeric',
         ]);
@@ -89,7 +90,8 @@ class PostController extends Controller
     public function edit($id)
     {
         return view('admin.post.edit',[
-            'post'=>Post::findOrFail($id)
+            'post'=>Post::findOrFail($id),
+            'category'=>PostCategory::all()
         ]);
     }
 

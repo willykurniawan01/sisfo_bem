@@ -82,9 +82,9 @@
                             <i class="fas fa-image fa-7x"></i>
                         </div>
                         <div class="col-8">  
-                            <h5 class="card-title">Image Parallax</h5>
-                            <p class="card-text">Mengubah Gambar Parallax pada halaman Home.</p>
-                            <a href="#" class="btn btn-primary">Ubah</a>
+                            <h5 class="card-title">Parallax</h5>
+                            <p class="card-text">Mengubah Gambar Parallax dan text pada halaman Home.</p>
+                            <a href="{{ route('setting.parallax') }}" class="btn btn-primary">Ubah</a>
                         </div>
                     </div>
                 </div>

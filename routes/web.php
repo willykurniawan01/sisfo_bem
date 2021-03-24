@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Home')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('/gallery', 'HomeController@index');
+    Route::get('/story', 'HomeController@story');
 });
 
 Auth::routes();
@@ -24,7 +25,7 @@ Auth::routes();
 Route::prefix('administrator')->namespace('Admin')->middleware(['auth','web'])->group(function () {
     Route::get('/', 'HomeController@index')->name('admin.index');
 
-    Route::get('/s/', 'SettingController@index')->name('setting.index');
+    Route::get('/s', 'SettingController@index')->name('setting.index');
     
     Route::get('/s/socialmedia', 'SettingController@socialmedia')->name('setting.socialmedia');
     Route::post('/s/socialmedia/update', 'SettingController@socialmedia_update')->name('setting.socialmedia.update');
@@ -35,6 +36,9 @@ Route::prefix('administrator')->namespace('Admin')->middleware(['auth','web'])->
     Route::get('/s/story', 'SettingController@story')->name('setting.story');
     Route::post('/s/story/update', 'SettingController@story_update')->name('setting.story.update');
 
+    Route::get('/s/parallax', 'SettingController@parallax')->name('setting.parallax');
+    Route::post('/s/parallax/update', 'SettingController@parallax_update')->name('setting.parallax.update');
+
     Route::resource('anggota', 'AnggotaController');
     Route::resource('kegiatan', 'KegiatanController');
     Route::resource('kehadiran', 'KehadiranController');
@@ -44,7 +48,10 @@ Route::prefix('administrator')->namespace('Admin')->middleware(['auth','web'])->
 
 
     Route::resource('post', 'PostController');
+    Route::resource('post_category', 'PostCategoryController');
+    
     Route::resource('gallery_category', 'GalleryCategoryController');
+    
     
 });
 

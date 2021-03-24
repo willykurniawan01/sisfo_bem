@@ -13,7 +13,12 @@ class SettingSeeder extends Seeder
     public function run()
     {
         Setting::create([
-            'nama'=>'carousel',
+            'nama'=>'parallax_pic',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'parallax_text',
             'value'=>''
         ]);
 
@@ -28,19 +33,40 @@ class SettingSeeder extends Seeder
         ]);
 
         Setting::create([
-            'nama'=>'Alamat',
+            'nama'=>'alamat',
             'value'=>''
         ]);
 
         Setting::create([
-            'nama'=>'Telepon',
+            'nama'=>'phone',
             'value'=>''
         ]);
 
         Setting::create([
-            'nama'=>'Email',
+            'nama'=>'email',
             'value'=>''
         ]);
+
+        Setting::create([
+            'nama'=>'story',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'story_pic',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'latitude',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'longitude',
+            'value'=>''
+        ]);
+        
 
 
     }

@@ -44,6 +44,8 @@ class SettingController extends Controller
             'alamat'=>Setting::where('nama','alamat')->first(),
             'phone'=>Setting::where('nama','phone')->first(),
             'email'=>Setting::where('nama','email')->first(),
+            'latitude'=>Setting::where('nama','latitude')->first(),
+            'longitude'=>Setting::where('nama','longitude')->first(),
         ]);
     }
 
@@ -59,6 +61,14 @@ class SettingController extends Controller
         Setting::where('nama','email')->update([
             'value'=>$request->email
         ]);  
+
+        Setting::where('nama','latitude')->update([
+            'value'=>$request->latitude
+        ]);  
+
+        Setting::where('nama','longitude')->update([
+            'value'=>$request->longitude
+        ]);  
           
         return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
       }
@@ -68,6 +78,13 @@ class SettingController extends Controller
         return view('admin.setting.story',[
             'alamat'=>Setting::where('nama','story')->first(),
             'phone'=>Setting::where('nama','story_pic')->first(),
+        ]);
+    }
+
+      public function parallax(){
+        return view('admin.setting.parallax',[
+            'alamat'=>Setting::where('nama','parallax_text')->first(),
+            'phone'=>Setting::where('nama','parallax_pic')->first(),
         ]);
     }
 
@@ -87,6 +104,32 @@ class SettingController extends Controller
             ]);  
       
             Setting::where('nama','story_pic')->update([
+                'value'=>$imageName
+            ]);  
+
+        }
+
+      
+
+        return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+      }
+
+    
+    public function parallax_update(Request $request){
+        $parallax_pic=Setting::where('nama','parallax_pic')->first();
+
+        if($request->hasFile('parallax_pic')){
+            if(File::exists('images/'.$parallax_pic->value)){
+                File::delete('images/'.$parallax_pic->value);
+            }
+            $imageName = time().'.'.$request->parallax_pic->extension();  
+            $request->parallax_pic->move(public_path('images'), $imageName);
+
+            Setting::where('nama','parallax_text')->update([
+                'value'=>$request->parallax_text
+            ]);  
+      
+            Setting::where('nama','parallax_pic')->update([
                 'value'=>$imageName
             ]);  
 

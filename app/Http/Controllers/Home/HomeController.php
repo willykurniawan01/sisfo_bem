@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Carousel;
+use App\Post;
 use App\Gallery;
 use App\Setting;
+use App\Carousel;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,7 @@ class HomeController extends Controller
 
         return view('Home.home',[
             'carousel'=>Carousel::all(),
+            'post'=>Post::all(),
             'gallery'=>Gallery::paginate(12),
             'instagram'=>Setting::where('nama','instagram')->first(),
             'facebook'=>Setting::where('nama','facebook')->first(),
@@ -22,6 +24,8 @@ class HomeController extends Controller
             'email'=>Setting::where('nama','email')->first(),
             'story'=>Setting::where('nama','story')->first(),
             'story_pic'=>Setting::where('nama','story_pic')->first(),
+            'parallax_text'=>Setting::where('nama','parallax_text')->first(),
+            'parallax_pic'=>Setting::where('nama','parallax_pic')->first(),
         ]);
     }
 }

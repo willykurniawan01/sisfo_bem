@@ -15,7 +15,7 @@
                   @forelse ($category as $item)
                   <li class="list-group-item d-flex justify-content-between">
                     {{ $item->nama }} 
-                    <form method="POST" action="{{ route('gallery_category.destroy',$item->id) }}" class="form-inline">
+                    <form method="POST" action="{{ route('post_category.destroy',$item->id) }}" class="form-inline">
                       @csrf
                       @method('delete')
                       <button class="badge btn btn-sm btn-danger">Hapus</button>
@@ -55,8 +55,7 @@
                                   <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ $item->judul }}</td>
-                                    <td class="text-center">{{ $item->picture }}</td>
-                                    <td class="text-center">{{ $item->tanggal_post }}
+                                    <td class="text-center"><img src="{{ $item->picture }}" style="width:100px; height:100px;" alt=""></td>
                                     <td> <form method="POST" action="{{ route('post.destroy',$item->id) }}" class="form-inline d-flex justify-content-center">
                                       @csrf
                                       @method('delete')
@@ -81,6 +80,33 @@
 
       </div>
       <!-- /.container-fluid -->
+
+        {{-- Modal --}}
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <form method="POST" action="{{ route('post_category.store') }}">
+                @csrf
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label class="col-form-label">Nama Ketegori:</label>
+                   <input type="text" name="nama" class="form-control">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
 @endsection
 
 @push('table-style')
