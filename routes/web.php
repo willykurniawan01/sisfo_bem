@@ -15,14 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Home')->group(function () {
-    Route::get('/', 'HomeController@index');
-    Route::get('/gallery', 'HomeController@index');
-    Route::get('/story', 'HomeController@story');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/gallery', 'GalleryController@index')->name('gallery');
+    Route::get('/blog', 'BlogController@index')->name('blog');
+    Route::get('/blog/category/{category}', 'BlogController@category')->name('blog.category');
+    Route::get('/blog/post/{post}', 'BlogController@detail')->name('blog.detail');
+    Route::get('/contact', 'HomeController@contact')->name('contact');
+    Route::get('/about', 'HomeController@about')->name('about');
+    Route::get('/demisioner', 'HomeController@index')->name('demisioner');
+
 });
 
 Auth::routes();
 
-Route::prefix('administrator')->namespace('Admin')->middleware(['auth','web'])->group(function () {
+Route::prefix('admin')->namespace('Admin')->middleware(['auth','web'])->group(function () {
     Route::get('/', 'HomeController@index')->name('admin.index');
 
     Route::get('/s', 'SettingController@index')->name('setting.index');

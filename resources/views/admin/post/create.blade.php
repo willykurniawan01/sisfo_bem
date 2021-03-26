@@ -51,14 +51,14 @@
                             <div class="input-group-prepend">
                               <label class="input-group-text" for="inputGroupSelect01">Options</label>
                             </div>
-                            <select name="post_categories_id" class="custom-select" id="inputGroupSelect01">
+                            <select name="post_category_id" class="custom-select" id="inputGroupSelect01">
                               <option value="" selected>Choose...</option>
                               @foreach ($category as $item)
                                 <option value="{{ $item->id }}">{{ $item->nama }}</option>
                               @endforeach   
                             </select>
                           </div>
-                          @error('post_categories_id')
+                          @error('post_category_id')
                           <div class="alert alert-danger mt-2">{{ $message }}</div>
                           @enderror 
                         </div>

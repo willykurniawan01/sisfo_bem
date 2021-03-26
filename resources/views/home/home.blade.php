@@ -2,66 +2,7 @@
 @section('title','Home')
     
 @section('content')
-     <!-- Sidebar -->
-     <aside class="sidebar trans-0-4">
-        <!-- Button Hide sidebar -->
-        <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
   
-        <!-- - -->
-        <ul class="menu-sidebar p-t-95 p-b-70">
-          <li class="t-center m-b-13">
-            <a href="index.html" class="txt19">Home</a>
-          </li>
-  
-          <li class="t-center m-b-13">
-            <a href="menu.html" class="txt19">Menu</a>
-          </li>
-  
-          <li class="t-center m-b-13">
-            <a href="gallery.html" class="txt19">Gallery</a>
-          </li>
-  
-          <li class="t-center m-b-13">
-            <a href="about.html" class="txt19">About</a>
-          </li>
-  
-          <li class="t-center m-b-13">
-            <a href="blog.html" class="txt19">Blog</a>
-          </li>
-  
-          <li class="t-center m-b-33">
-            <a href="contact.html" class="txt19">Contact</a>
-          </li>
-  
-          <li class="t-center">
-            <!-- Button3 -->
-            <a
-              href="reservation.html"
-              class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"
-            >
-              Reservation
-            </a>
-          </li>
-        </ul>
-  
-        <!-- - -->
-        <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-          <!-- - -->
-          <h4 class="txt20 m-b-33">Gallery</h4>
-  
-          <!-- Gallery -->
-          <div class="wrap-gallery-sidebar flex-w">
-            <a
-              class="item-gallery-sidebar wrap-pic-w"
-              href="images/photo-gallery-01.jpg"
-              data-lightbox="gallery-footer"
-            >
-              <img src="images/photo-gallery-thumb-01.jpg" alt="GALLERY" />
-            </a>
-  
-          </div>
-        </div>
-      </aside>
   
       <!-- Slide1 -->
       <section class="section-slide">
@@ -96,7 +37,7 @@
                   data-appear="zoomIn"
                 >
                   <!-- Button1 -->
-                  <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                  <a href="{{ route('about') }}" class="btn1 flex-c-m size1 txt3 trans-0-4">
                     Explore
                   </a>
                 </div>
@@ -126,7 +67,7 @@
                   {!!  (str_word_count($story->value) > 60 ? substr($story->value,0,200)." ..." : $story->value)   !!}
                 </p>
   
-                <a href="about.html" class="txt4">
+                <a href="{{ route('about') }}" class="txt4">
                   Our Story
                   <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
                 </a>
@@ -150,7 +91,6 @@
           class="header-intro parallax100 t-center p-t-135 p-b-158"
           style="background-image: url({{ asset('images').'/'.$parallax_pic->value }})"
         >
-          <span class="tit2 p-l-15 p-r-15"> Discover </span>
   
           <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">{{ $parallax_text->value }}</h3>
         </div>
@@ -165,7 +105,7 @@
                 <!-- Block1 -->
                 <div class="blo1">
                   <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                    <a href="#"
+                    <a href="{{ route('blog.detail',$item->id) }}"
                       ><img src="{{ $item->picture }}" alt="IMG-INTRO"
                     /></a>
                   </div>
@@ -178,12 +118,11 @@
                     </a>
   
                     <p class="m-b-20">
-                      Phasellus lorem enim, luctus ut velit eget, con-vallis
-                      egestas eros.
+                      {!!  (str_word_count($item->isi) > 60 ? substr($item->isi,0,200)." ..." : $item->isi)   !!}
                     </p>
   
-                    <a href="#" class="txt4">
-                      Learn More
+                    <a href="{{ route('blog.detail',$item->id) }}" class="txt4">
+                      Read More
                       <i
                         class="fa fa-long-arrow-right m-l-10"
                         aria-hidden="true"

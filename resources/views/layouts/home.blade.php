@@ -12,115 +12,189 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('home/vendor/bootstrap/css/bootstrap.min.css') }}"
+      href="{{ asset('asset/home/vendor/bootstrap/css/bootstrap.min.css') }}"
     />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('home/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}"
+      href="{{ asset('asset/home/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}"
     />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('home/fonts/themify/themify-icons.css') }}"
+      href="{{ asset('asset/home/fonts/themify/themify-icons.css') }}"
     />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('home/vendor/animate/animate.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/home/vendor/animate/animate.css') }}" />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('home/vendor/css-hamburgers/hamburgers.min.css') }}"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ asset('home/vendor/animsition/css/animsition.min.css') }}"
+      href="{{ asset('asset/home/vendor/css-hamburgers/hamburgers.min.css') }}"
     />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('home/vendor/select2/select2.min.css') }}"
+      href="{{ asset('asset/home/vendor/animsition/css/animsition.min.css') }}"
     />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('home/vendor/daterangepicker/daterangepicker.css') }}"
+      href="{{ asset('asset/home/vendor/select2/select2.min.css') }}"
     />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('home/vendor/slick/slick.css') }}" />
     <!--===============================================================================================-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('home/vendor/lightbox2/css/lightbox.min.css') }}"
+      href="{{ asset('asset/home/vendor/daterangepicker/daterangepicker.css') }}"
     />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/util.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/main.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/home/vendor/slick/slick.css') }}" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ asset('asset/home/vendor/lightbox2/css/lightbox.min.css') }}"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/home/css/util.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/home/css/main.css') }}" />
     <!--===============================================================================================-->
   </head>
 
   <body class="animsition">
     <!-- Header -->
-    <header>
-      <!-- Header desktop -->
-      <div class="wrap-menu-header gradient1 trans-0-4">
-        <div class="container h-full">
-          <div class="wrap_header trans-0-3">
-            <!-- Logo -->
-            <div class="logo">
-              <a href="index.html">
-                <img
-                  src="{{ asset('images/logo.png') }}"
-                  alt="IMG-LOGO"
-                  data-logofixed="{{ asset('images/logo.png') }}"
-                />
+          <header>
+            <!-- Header desktop -->
+            <div class="wrap-menu-header gradient1 trans-0-4">
+              <div class="container h-full">
+                <div class="wrap_header trans-0-3">
+                  <!-- Logo -->
+                  <div class="logo">
+                    <a href="index.html">
+                      <img
+                        src="{{ asset('images/logo.png') }}"
+                        alt="IMG-LOGO"
+                        data-logofixed="{{ asset('images/logo.png') }}"
+                      />
+                    </a>
+                  </div>
+
+                  <!-- Menu -->
+                  <div class="wrap_menu p-l-45 p-l-0-xl">
+                    <nav class="menu">
+                      <ul class="main_menu">
+                        <li>
+                          <a href="{{ route('home') }}">Home</a>
+                        </li>
+                        
+                        <li>
+                          <a href="{{ route('about') }}">About</a>
+                        </li>
+                        <li>
+                          <a href="{{ route('blog') }}">Blog</a>
+                        </li>
+
+                        <li>
+                          <a href="{{ route('contact') }}">Contact</a>
+                        </li>
+
+                        <li>
+                          <a href="{{ route('demisioner') }}">Demisioner</a>
+                        </li>
+                        <li>
+                          <a href="{{ route('gallery') }}">Gallery</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+
+                  <!-- Social -->
+                  <div class="social flex-w flex-l-m p-r-20">
+                    <a href="{{ $facebook->value }}"
+                      ><i class="fa fa-facebook m-l-21" aria-hidden="true"></i
+                    ></a>
+                    <a href="#"
+                      ><i class="fa fa-twitter m-l-21" aria-hidden="true"></i
+                    ></a>
+                    <a href="{{ $instagram->value }}"
+                      ><i class="fa fa-instagram m-l-21" aria-hidden="true"></i
+                    ></a>
+
+                    <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+         <!-- Sidebar -->
+         <aside class="sidebar trans-0-4">
+          <!-- Button Hide sidebar -->
+          <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
+    
+          <!-- - -->
+          <ul class="menu-sidebar p-t-95 p-b-70">
+            <li class="t-center m-b-13">
+              <a href="index.html" class="txt19">Home</a>
+            </li>
+    
+            <li class="t-center m-b-13">
+              <a href="menu.html" class="txt19">Menu</a>
+            </li>
+    
+            <li class="t-center m-b-13">
+              <a href="gallery.html" class="txt19">Gallery</a>
+            </li>
+    
+            <li class="t-center m-b-13">
+              <a href="about.html" class="txt19">About</a>
+            </li>
+    
+            <li class="t-center m-b-13">
+              <a href="blog.html" class="txt19">Blog</a>
+            </li>
+    
+            <li class="t-center m-b-33">
+              <a href="contact.html" class="txt19">Contact</a>
+            </li>
+    
+            <li class="t-center">
+              <!-- Button3 -->
+              <a
+                href="reservation.html"
+                class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"
+              >
+                Reservation
               </a>
-            </div>
-
-            <!-- Menu -->
-            <div class="wrap_menu p-l-45 p-l-0-xl">
-              <nav class="menu">
-                <ul class="main_menu">
-                  <li>
-                    <a href="index.html">Home</a>
-                  </li>
-
-                  <li>
-                    <a href="gallery.html">Gallery</a>
-                  </li>
-
-                  <li>
-                    <a href="contact.html">Contact</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
-            <!-- Social -->
-            <div class="social flex-w flex-l-m p-r-20">
-              <a href="{{ $facebook->value }}"
-                ><i class="fa fa-facebook m-l-21" aria-hidden="true"></i
-              ></a>
-              <a href="#"
-                ><i class="fa fa-twitter m-l-21" aria-hidden="true"></i
-              ></a>
-              <a href="{{ $instagram->value }}"
-                ><i class="fa fa-instagram m-l-21" aria-hidden="true"></i
-              ></a>
-
-              <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+            </li>
+          </ul>
+    
+          <!-- - -->
+          <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+            <!-- - -->
+            <h4 class="txt20 m-b-33">Gallery</h4>
+    
+            <!-- Gallery -->
+            <div class="wrap-gallery-sidebar flex-w">
+              @foreach ($gallery as $item)
+                <a
+                class="item-gallery-sidebar wrap-pic-w"
+                href="{{ $item->picture }}"
+                data-lightbox="gallery-footer"
+              >
+                <img src="{{ $item->picture }}" alt="GALLERY" />
+              </a>
+              @endforeach
+            
+    
             </div>
           </div>
-        </div>
-      </div>
-    </header>
+        </aside>
 
     @yield('content')
    
@@ -169,7 +243,7 @@
                   
               <a
                 class="item-gallery-footer wrap-pic-w"
-                href="images/photo-gallery-01.jpg"
+                href="{{ $item->picture }}"
                 data-lightbox="gallery-footer"
               >
                 <img src="{{ $item->picture }}" alt="GALLERY" />
@@ -249,37 +323,37 @@
     <!--===============================================================================================-->
     <script
       type="text/javascript"
-      src="{{ asset('home/vendor/jquery/jquery-3.2.1.min.js') }}"
+      src="{{ asset('asset/home/vendor/jquery/jquery-3.2.1.min.js') }}"
     ></script>
     <!--===============================================================================================-->
     <script
       type="text/javascript"
-      src="{{ asset('home/vendor/animsition/js/animsition.min.js') }}"
+      src="{{ asset('asset/home/vendor/animsition/js/animsition.min.js') }}"
     ></script>
     <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ asset('home/vendor/bootstrap/js/popper.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('asset/home/vendor/bootstrap/js/popper.js') }}"></script>
     <script
       type="text/javascript"
-      src="{{ asset('home/vendor/bootstrap/js/bootstrap.min.js') }}"
+      src="{{ asset('asset/home/vendor/bootstrap/js/bootstrap.min.js') }}"
     ></script>
     <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ asset('home/vendor/select2/select2.min.js') }}"></script>
-    <!--===============================================================================================-->
-    <script
-      type="text/javascript"
-      src="{{ asset('home/vendor/daterangepicker/moment.min.js') }}"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{{ asset('home/vendor/daterangepicker/daterangepicker.js') }}"
-    ></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ asset('home/vendor/slick/slick.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('home/js/slick-custom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('asset/home/vendor/select2/select2.min.js') }}"></script>
     <!--===============================================================================================-->
     <script
       type="text/javascript"
-      src="{{ asset('home/vendor/parallax100/parallax100.js') }}"
+      src="{{ asset('asset/home/vendor/daterangepicker/moment.min.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ asset('asset/home/vendor/daterangepicker/daterangepicker.js') }}"
+    ></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{{ asset('asset/home/vendor/slick/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('asset/home/js/slick-custom.js') }}"></script>
+    <!--===============================================================================================-->
+    <script
+      type="text/javascript"
+      src="{{ asset('asset/home/vendor/parallax100/parallax100.js') }}"
     ></script>
     <script type="text/javascript">
       $(".parallax100").parallax100();
@@ -287,14 +361,16 @@
     <!--===============================================================================================-->
     <script
       type="text/javascript"
-      src="{{ asset('home/vendor/countdowntime/countdowntime.js') }}"
+      src="{{ asset('asset/home/vendor/countdowntime/countdowntime.js') }}"
     ></script>
     <!--===============================================================================================-->
     <script
       type="text/javascript"
-      src="{{ asset('home/vendor/lightbox2/js/lightbox.min.js') }}"
+      src="{{ asset('asset/home/vendor/lightbox2/js/lightbox.min.js') }}"
     ></script>
     <!--===============================================================================================-->
-    <script src="{{ asset('home/js/main.js') }}"></script>
+
+
+    <script src="{{ asset('asset/home/js/main.js') }}"></script>
   </body>
 </html>

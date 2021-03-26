@@ -83,7 +83,7 @@
                         </div>
                         <div class="col-8">  
                             <h5 class="card-title">Parallax</h5>
-                            <p class="card-text">Mengubah Gambar Parallax dan text pada halaman Home.</p>
+                            <p class="card-text">Mengubah Gambar Efek Parallax dan text</p>
                             <a href="{{ route('setting.parallax') }}" class="btn btn-primary">Ubah</a>
                         </div>
                     </div>

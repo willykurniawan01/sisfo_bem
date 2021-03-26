@@ -52,7 +52,7 @@ class PostController extends Controller
             'judul'=>'required|string',
             'isi'=>'required',
             'picture'=>'image|mimes:jpeg,png,jpg,gif,svg',
-            'post_categories_id'=>'numeric',
+            'post_category_id'=>'required|numeric',
         ]);
 
         $imageName = time().'.'.$request->picture->extension();  
@@ -63,7 +63,7 @@ class PostController extends Controller
             'isi'=>$request->isi,
             'user_id'=>Auth::user()->id,
             'picture'=>URL::to('images').'/'.$imageName,
-            'post_categories_id'=>$request->post_categories_id
+            'post_category_id'=>$request->post_category_id
         ]);
 
         return redirect()->route('post.index')->with('success','Berhasil Menambahkan Post!');
@@ -120,7 +120,7 @@ class PostController extends Controller
                 'isi'=>$request->isi,
                 'user_id'=>Auth::user()->id,
                 'picture'=>URL::to('images').'/'.$imageName,
-                'post_categories_id'=>$request->post_categories_id
+                'post_category_id'=>$request->post_category_id
             ]);
         }else{
             $post->update($request->except('_token'));
