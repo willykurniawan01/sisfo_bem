@@ -71,12 +71,8 @@
 
 									<span>
 										{{ $item->category->nama }}
-										<span class="m-r-6 m-l-4">|</span>
 									</span>
 
-									<span>
-										8 Comments
-									</span>
 								</div>
 
 								<p>
@@ -95,8 +91,7 @@
 						
 						<!-- Pagination -->
 						<div class="pagination flex-l-m flex-w m-l--6 p-t-25">
-							<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-							<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+							{{ $post->links('pagination') }}
 						</div>
 					</div>
 				</div>

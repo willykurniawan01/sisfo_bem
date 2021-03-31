@@ -4,7 +4,7 @@
 @section('content')
     
 	<!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset('images/'.$parallax_pic->value) }});">
+	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset('images/'.$parallax_pic->value) }}); background-attachment:fixed;">
 		<h2 class="tit6 t-center">
 			Contact
 		</h2>

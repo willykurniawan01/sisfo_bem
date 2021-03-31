@@ -1,6 +1,7 @@
 <?php
 
 use App\GalleryCategory;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,8 @@ Route::namespace('Home')->group(function () {
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::get('/about', 'HomeController@about')->name('about');
     Route::get('/demisioner', 'HomeController@index')->name('demisioner');
-
+    Route::get('/anggota','AnggotaController@index')->name('anggota');
+    Route::get('/anggota/{nim}', 'AnggotaController@detail')->name('anggota.detail');
 });
 
 Auth::routes();

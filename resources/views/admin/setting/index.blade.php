@@ -48,7 +48,7 @@
                             <i class="fab fa-instagram fa-7x"></i>
                         </div>
                         <div class="col-8">  
-                            <h5 class="card-title">Link Social Media</h5>
+                            <h5 class="card-title">Link Social Media dan Video Youtube</h5>
                             <p class="card-text">Mengubah link Social media.</p>
                             <a href="{{ route('setting.socialmedia') }}" class="btn btn-primary">Ubah</a>
                         </div>
@@ -90,6 +90,7 @@
                 </div>
             </div>
         </div>
+
 
     </div>
 </div>

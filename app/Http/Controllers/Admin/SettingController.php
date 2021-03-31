@@ -19,6 +19,7 @@ class SettingController extends Controller
     public function socialmedia(){
         return view('admin.setting.socialmedia',[
             'instagram'=>Setting::where('nama','instagram')->first(),
+            'youtube_link'=>Setting::where('nama','youtube_link')->first(),
             'facebook'=>Setting::where('nama','facebook')->first()
         ]);
     }
@@ -34,6 +35,10 @@ class SettingController extends Controller
 
       Setting::where('nama','twitter')->update([
           'value'=>$request->twitter
+      ]);  
+
+      Setting::where('nama','youtube_link')->update([
+          'value'=>$request->youtube_link
       ]);  
         
       return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');

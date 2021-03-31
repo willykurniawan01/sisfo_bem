@@ -369,7 +369,7 @@
       src="{{ asset('asset/home/vendor/lightbox2/js/lightbox.min.js') }}"
     ></script>
     <!--===============================================================================================-->
-
+    @stack('gallery')
 
     <script src="{{ asset('asset/home/js/main.js') }}"></script>
   </body>

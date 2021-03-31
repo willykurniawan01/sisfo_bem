@@ -9,6 +9,6 @@ use App\Demisioner;
 class DemisionerController extends Controller
 {
     public function index(){
-
+        
     }
 }

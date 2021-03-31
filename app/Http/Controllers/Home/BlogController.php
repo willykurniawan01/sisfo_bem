@@ -14,7 +14,7 @@ class BlogController extends Controller
     public function index(){
 
         return view('home.blog.index',[
-            'post'=>Post::with('user')->get(),
+            'post'=>Post::with('user')->paginate(10),
             'category'=>PostCategory::all(),
             'parallax_pic'=>Setting::where('nama','parallax_pic')->first(),
             'gallery'=>Gallery::paginate(12),

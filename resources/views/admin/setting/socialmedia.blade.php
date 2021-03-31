@@ -16,7 +16,7 @@
         <div class="col-8">
             <div class="card shadow mb-4 mt-3">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Social Media Setting</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Pengaturan Social Media dan Link Video Youtube</h6>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('setting.socialmedia.update') }}">
@@ -28,6 +28,10 @@
                         <div class="form-group">
                             <label for="">Link Facebook</label>
                             <input name="facebook" type="text" value="{{ $facebook->value }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Link Video Youtube</label>
+                            <input name="youtube_link" type="text" value="{{ $youtube_link->value }}" class="form-control">
                         </div>
                         <div class="button group">
                             <button type="submit" class="btn btn-primary">
