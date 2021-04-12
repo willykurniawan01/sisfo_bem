@@ -38,7 +38,7 @@
                           <div class="form-group">
                             <label for="">Story</label>
                             <textarea name="story" id="editor" >
-
+                              {{ $story->value }}
                             </textarea>
                   
                         </div>

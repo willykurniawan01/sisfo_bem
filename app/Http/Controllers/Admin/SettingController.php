@@ -6,6 +6,7 @@ use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class SettingController extends Controller
@@ -19,7 +20,6 @@ class SettingController extends Controller
     public function socialmedia(){
         return view('admin.setting.socialmedia',[
             'instagram'=>Setting::where('nama','instagram')->first(),
-            'youtube_link'=>Setting::where('nama','youtube_link')->first(),
             'facebook'=>Setting::where('nama','facebook')->first()
         ]);
     }
@@ -37,9 +37,7 @@ class SettingController extends Controller
           'value'=>$request->twitter
       ]);  
 
-      Setting::where('nama','youtube_link')->update([
-          'value'=>$request->youtube_link
-      ]);  
+     
         
       return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
     }
@@ -79,17 +77,17 @@ class SettingController extends Controller
       }
 
 
-      public function story(){
+        public function story(){
         return view('admin.setting.story',[
-            'alamat'=>Setting::where('nama','story')->first(),
-            'phone'=>Setting::where('nama','story_pic')->first(),
+            'story'=>Setting::where('nama','story')->first(),
+            'story_pic'=>Setting::where('nama','story_pic')->first(),
         ]);
     }
 
       public function parallax(){
         return view('admin.setting.parallax',[
-            'alamat'=>Setting::where('nama','parallax_text')->first(),
-            'phone'=>Setting::where('nama','parallax_pic')->first(),
+            'parallax_text'=>Setting::where('nama','parallax_text')->first(),
+            'parallax'=>Setting::where('nama','parallax')->first(),
         ]);
     }
 
@@ -121,20 +119,17 @@ class SettingController extends Controller
 
     
     public function parallax_update(Request $request){
-        $parallax_pic=Setting::where('nama','parallax_pic')->first();
+        $parallax=Setting::where('nama','parallax')->first();
 
-        if($request->hasFile('parallax_pic')){
-            if(File::exists('images/'.$parallax_pic->value)){
-                File::delete('images/'.$parallax_pic->value);
+        if($request->hasFile('parallax')){
+            if(File::exists('images/'.$parallax->value)){
+                File::delete('images/'.$parallax->value);
             }
-            $imageName = time().'.'.$request->parallax_pic->extension();  
-            $request->parallax_pic->move(public_path('images'), $imageName);
+            $imageName = time().'.'.$request->parallax->extension();  
+            $request->parallax->move(public_path('images'), $imageName);
 
-            Setting::where('nama','parallax_text')->update([
-                'value'=>$request->parallax_text
-            ]);  
-      
-            Setting::where('nama','parallax_pic')->update([
+    
+            Setting::where('nama','parallax')->update([
                 'value'=>$imageName
             ]);  
 
@@ -143,6 +138,43 @@ class SettingController extends Controller
       
 
         return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+      }
+
+      public function quote(){
+          return view('admin.setting.quote',[
+              'quote'=>Setting::where('nama','quote')->first(),
+              'quote_author'=>Setting::where('nama','quote_author')->first()
+          ]);
+      }
+
+      public function quote_update(Request $request){
+          Setting::where('nama','quote')->update([
+            'value'=>$request->quote
+          ]);
+
+          Setting::where('nama','quote_author')->update([
+            'value'=>$request->quote_author
+          ]);
+
+          return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+      }
+
+
+      public function akun(){
+          return view('admin.setting.akun',[
+              'user'=>Auth::user()
+          ]);
+      }
+
+      public function gantipassword(){
+          return view('admin.setting.gantipassword',[
+              'user'=>Auth::user()
+          ]);
+      }
+
+
+      public function updatepassword(){
+         return redirect()->route('setting.akun')->with('success','Berhasil merubah password!');
       }
 
     

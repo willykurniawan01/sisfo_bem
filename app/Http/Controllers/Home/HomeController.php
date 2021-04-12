@@ -24,8 +24,9 @@ class HomeController extends Controller
             'email'=>Setting::where('nama','email')->first(),
             'story'=>Setting::where('nama','story')->first(),
             'story_pic'=>Setting::where('nama','story_pic')->first(),
-            'parallax_text'=>Setting::where('nama','parallax_text')->first(),
-            'parallax_pic'=>Setting::where('nama','parallax_pic')->first(),
+            'quote'=>Setting::where('nama','quote')->first(),
+            'quote_author'=>Setting::where('nama','quote_author')->first(),
+            'parallax'=>Setting::where('nama','parallax')->first(),
         ]);
     }
 
@@ -33,7 +34,7 @@ class HomeController extends Controller
     public function contact(){
         return view('home.contact.index',[
             'gallery'=>Gallery::paginate(12),
-            'parallax_pic'=>Setting::where('nama','parallax_pic')->first(),
+            'parallax'=>Setting::where('nama','parallax')->first(),
             'instagram'=>Setting::where('nama','instagram')->first(),
             'facebook'=>Setting::where('nama','facebook')->first(),
             'alamat'=>Setting::where('nama','alamat')->first(),
@@ -47,7 +48,7 @@ class HomeController extends Controller
     public function about(){
         return view('home.about.index',[
             'gallery'=>Gallery::paginate(12),
-            'parallax_pic'=>Setting::where('nama','parallax_pic')->first(),
+            'parallax'=>Setting::where('nama','parallax')->first(),
             'story'=>Setting::where('nama','story')->first(),
             'instagram'=>Setting::where('nama','instagram')->first(),
             'facebook'=>Setting::where('nama','facebook')->first(),

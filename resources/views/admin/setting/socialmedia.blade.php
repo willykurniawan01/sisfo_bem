@@ -29,10 +29,7 @@
                             <label for="">Link Facebook</label>
                             <input name="facebook" type="text" value="{{ $facebook->value }}" class="form-control">
                         </div>
-                        <div class="form-group">
-                            <label for="">Link Video Youtube</label>
-                            <input name="youtube_link" type="text" value="{{ $youtube_link->value }}" class="form-control">
-                        </div>
+                  
                         <div class="button group">
                             <button type="submit" class="btn btn-primary">
                                 Simpan

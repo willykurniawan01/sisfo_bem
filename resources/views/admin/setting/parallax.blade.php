@@ -21,33 +21,25 @@
                      <form method="POST" action="{{ route('setting.parallax.update') }}" enctype="multipart/form-data">
                       @csrf  
                      
+                        <img class="img-thumbnail" src="{{ asset('images/'.$parallax->value) }}"  alt="">
 
-                          <div class="form-group">
-                            <label for="">Parallax Picture</label>
+                          <div class="form-group mt-4">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                  <span class="input-group-text" id="inputGroupFileAddon01">Ganti Gambar</span>
                                 </div>
                                 <div class="custom-file">
-                                  <input type="file" name="parallax_pic" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                  <input type="file" name="parallax" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                                   <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                               </div>                
                         </div>
                          
-                          <div class="form-group">
-                            <label for="">Parallax Text</label>
-                            <textarea name="parallax_text" id="editor" >
-
-                            </textarea>
-                  
-                        </div>
-                         
-                         
+                     
                          
                       <div class="row mt-3">
                         <div class="col-12">  
-                          <button class="btn btn-primary">Submit</button>
+                          <button class="btn btn-primary">Simpan</button>
                         </div>
                       </div>
                   

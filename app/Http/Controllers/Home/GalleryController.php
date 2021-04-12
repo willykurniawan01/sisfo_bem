@@ -14,7 +14,7 @@ class GalleryController extends Controller
         return view('home.gallery.index',[
             'gallery'=>Gallery::paginate(20),
             'gallery_category'=>GalleryCategory::all(),
-            'parallax_pic'=>Setting::where('nama','parallax_pic')->first(),
+            'parallax'=>Setting::where('nama','parallax')->first(),
             'story'=>Setting::where('nama','story')->first(),
             'instagram'=>Setting::where('nama','instagram')->first(),
             'facebook'=>Setting::where('nama','facebook')->first(),

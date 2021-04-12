@@ -23,7 +23,7 @@ Route::namespace('Home')->group(function () {
     Route::get('/blog/post/{post}', 'BlogController@detail')->name('blog.detail');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::get('/about', 'HomeController@about')->name('about');
-    Route::get('/demisioner', 'HomeController@index')->name('demisioner');
+    Route::get('/demisioner', 'DemisionerController@index')->name('demisioner');
     Route::get('/anggota','AnggotaController@index')->name('anggota');
     Route::get('/anggota/{nim}', 'AnggotaController@detail')->name('anggota.detail');
 });
@@ -46,6 +46,17 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','web'])->group(fu
 
     Route::get('/s/parallax', 'SettingController@parallax')->name('setting.parallax');
     Route::post('/s/parallax/update', 'SettingController@parallax_update')->name('setting.parallax.update');
+
+    Route::get('/s/quote', 'SettingController@quote')->name('setting.quote');
+    Route::post('/s/quote/update', 'SettingController@quote_update')->name('setting.quote.update');
+
+    Route::get('/s/akun', 'SettingController@akun')->name('setting.akun');
+    Route::get('/s/gantipassword', 'SettingController@gantipassword')->name('setting.gantipassword');
+
+    Route::post('/s/updatepassword/{id}', 'SettingController@updatepassword')->name('setting.updatepassword');
+
+
+    
 
     Route::resource('anggota', 'AnggotaController');
     Route::resource('kegiatan', 'KegiatanController');

@@ -89,10 +89,18 @@
       <section class="section-intro">
         <div
           class="header-intro parallax100 t-center p-t-135 p-b-158"
-          style="background-image: url({{ asset('images').'/'.$parallax_pic->value }})"
+          style="background-image: url({{ asset('images').'/'.$parallax->value }})"
         >
+
+        <blockquote class="blockquote text-center">
+          <p class="mb-0 tit4 t-center p-l-15 p-r-15 p-t-3">{{ $quote->value }}</p>
+          <footer class="blockquote-footer tit-custom p-l-15 p-r-15"> <cite title="Source Title">{{ $quote_author->value }}</cite></footer>
+        </blockquote>
   
-          <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">{{ $parallax_text->value }}</h3>
+         {{-- <span class="tit2 p-l-15 p-r-15">  </span>
+          <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
+            {{ $parallax_text->value }}
+          </h3> --}}
         </div>
   
         <div class="content-intro bg-white p-t-77 p-b-133">
@@ -106,7 +114,7 @@
                 <div class="blo1">
                   <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
                     <a href="{{ route('blog.detail',$item->id) }}"
-                      ><img src="{{ $item->picture }}" alt="IMG-INTRO"
+                      ><img style="height:250px;" src="{{ $item->picture }}" alt="IMG-INTRO"
                     /></a>
                   </div>
   
