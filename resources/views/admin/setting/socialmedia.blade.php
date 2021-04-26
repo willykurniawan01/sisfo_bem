@@ -16,7 +16,7 @@
         <div class="col-8">
             <div class="card shadow mb-4 mt-3">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Pengaturan Social Media dan Link Video Youtube</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Pengaturan Link Social Media</h6>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('setting.socialmedia.update') }}">

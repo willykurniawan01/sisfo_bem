@@ -13,12 +13,17 @@ class SettingSeeder extends Seeder
     public function run()
     {
         Setting::create([
-            'nama'=>'parallax_pic',
+            'nama'=>'parallax',
             'value'=>''
         ]);
 
         Setting::create([
-            'nama'=>'parallax_text',
+            'nama'=>'quote',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'quote_author',
             'value'=>''
         ]);
 

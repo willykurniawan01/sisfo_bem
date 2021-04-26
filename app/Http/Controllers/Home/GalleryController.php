@@ -7,6 +7,7 @@ use App\GalleryCategory;
 use App\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Page;
 
 class GalleryController extends Controller
 {
@@ -14,7 +15,7 @@ class GalleryController extends Controller
         return view('home.gallery.index',[
             'gallery'=>Gallery::paginate(20),
             'gallery_category'=>GalleryCategory::all(),
-            'parallax'=>Setting::where('nama','parallax')->first(),
+            'gallery_pic'=>Setting::where('nama','gallery_pic')->first(),
             'story'=>Setting::where('nama','story')->first(),
             'instagram'=>Setting::where('nama','instagram')->first(),
             'facebook'=>Setting::where('nama','facebook')->first(),
@@ -23,6 +24,7 @@ class GalleryController extends Controller
             'email'=>Setting::where('nama','email')->first(),
             'latitude'=>Setting::where('nama','latitude')->first(),
             'longitude'=>Setting::where('nama','longitude')->first(),
+            'pages'=>Page::all()
         ]);
     }
 }

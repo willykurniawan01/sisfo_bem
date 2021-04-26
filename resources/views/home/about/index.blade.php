@@ -5,14 +5,14 @@
     
 
 	<!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/{{ $parallax->value }}); background-attachment:fixed;">
+	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/{{ $about_pic->value }}); background-attachment:fixed;">
 		<h2 class="tit6 t-center">
 			About Us
 		</h2>
 	</section>
 
 
-	<!-- Our Story -->
+	<!-- Our about -->
 	<section class="bg2-pattern p-t-116 p-b-110 t-center p-l-15 p-r-15">
 		<span class="tit2 t-center">
 			Badan Eksekutif Mahasiswa
@@ -23,7 +23,7 @@
 		</h3>
 
 		<p class="t-center size32 m-l-r-auto">
-			{!! $story->value !!}
+			{!! $about->value !!}
 		</p>
 	</section>
 

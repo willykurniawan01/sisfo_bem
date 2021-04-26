@@ -56,59 +56,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-12 col-md-8 mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <i class="fas fa-image fa-7x"></i>
-                        </div>
-                        <div class="col-8">  
-                            <h5 class="card-title">Story</h5>
-                            <p class="card-text">Mengubah Story BEM</p>
-                            <a href="{{ route('setting.story') }}" class="btn btn-primary">Ubah</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-8 mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <i class="fas fa-image fa-7x"></i>
-                        </div>
-                        <div class="col-8">  
-                            <h5 class="card-title">Parallax</h5>
-                            <p class="card-text">Mengubah Gambar Efek Parallax</p>
-                            <a href="{{ route('setting.parallax') }}" class="btn btn-primary">Ubah</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-8 mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <i class="fas fa-quote-right fa-7x"></i>
-                        </div>
-                        <div class="col-8">  
-                            <h5 class="card-title">Quote</h5>
-                            <p class="card-text">Mengubah Quote</p>
-                            <a href="{{ route('setting.quote') }}" class="btn btn-primary">Ubah</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+      
     </div>
 </div>
     

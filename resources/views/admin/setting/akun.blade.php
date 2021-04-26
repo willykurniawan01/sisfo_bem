@@ -18,25 +18,18 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Pengaturan Akun</h6>
                 </div>
-                <div class="card-body">
+                <div class="card-body px-5">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="">Nama</label>
+                                    <label for="">Nama :</label>
                                     <input name="name" type="text" disabled value="{{ $user->name }}" class="form-control">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="">Username</label>
+                                    <label for="">Username :</label>
                                     <input name="username" type="text" disabled value="{{ $user->username }}" class="form-control">
                                 </div>
-        
-        
-                                <div class="form-group">
-                                    <label for="">Password</label>
-                                    <input name="username" type="password" disabled value="{{ $user->password }}" class="form-control">
-                                </div>
-        
                                
                           
                                 <div class="button group">

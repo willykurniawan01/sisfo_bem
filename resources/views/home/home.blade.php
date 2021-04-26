@@ -64,11 +64,11 @@
                 <h3 class="tit3 t-center m-b-35 m-t-5">STMIK Amik Riau</h3>
   
                 <p class="t-center m-b-22 size3 m-l-r-auto">
-                  {!!  (str_word_count($story->value) > 60 ? substr($story->value,0,200)." ..." : $story->value)   !!}
+                  {!!  (str_word_count($about->value) > 60 ? substr($about->value,0,200)." ..." : $about->value)   !!}
                 </p>
   
                 <a href="{{ route('about') }}" class="txt4">
-                  Our Story
+                  Read more
                   <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
                 </a>
               </div>
@@ -78,7 +78,7 @@
               <div
                 class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto"
               >
-                <img src="{{ asset('images/'.$story_pic->value) }}" alt="IMG-OUR" />
+                <img src="{{ asset('images/'.$about_pic->value) }}" alt="IMG-OUR" />
               </div>
             </div>
           </div>
@@ -88,8 +88,8 @@
       <!-- Intro -->
       <section class="section-intro">
         <div
-          class="header-intro parallax100 t-center p-t-135 p-b-158"
-          style="background-image: url({{ asset('images').'/'.$parallax->value }})"
+          class="header-intro quote_bg100 t-center p-t-135 p-b-158"
+          style="background-image: url({{ asset('images').'/'.$quote_bg->value }})"
         >
 
         <blockquote class="blockquote text-center">
@@ -99,7 +99,7 @@
   
          {{-- <span class="tit2 p-l-15 p-r-15">  </span>
           <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
-            {{ $parallax_text->value }}
+            {{ $quote_bg_text->value }}
           </h3> --}}
         </div>
   

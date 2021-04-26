@@ -77,36 +77,31 @@ class SettingController extends Controller
       }
 
 
-        public function story(){
-        return view('admin.setting.story',[
-            'story'=>Setting::where('nama','story')->first(),
-            'story_pic'=>Setting::where('nama','story_pic')->first(),
+        public function about(){
+        return view('admin.setting.pages.about',[
+            'about'=>Setting::where('nama','about')->first(),
+            'about_pic'=>Setting::where('nama','about_pic')->first(),
         ]);
     }
 
-      public function parallax(){
-        return view('admin.setting.parallax',[
-            'parallax_text'=>Setting::where('nama','parallax_text')->first(),
-            'parallax'=>Setting::where('nama','parallax')->first(),
-        ]);
-    }
+   
 
     
-    public function story_update(Request $request){
-        $story_pic=Setting::where('nama','story_pic')->first();
+    public function about_update(Request $request){
+        $about_pic=Setting::where('nama','about_pic')->first();
 
-        if($request->hasFile('story_pic')){
-            if(File::exists('images/'.$story_pic->value)){
-                File::delete('images/'.$story_pic->value);
+        if($request->hasFile('about_pic')){
+            if(File::exists('images/'.$about_pic->value)){
+                File::delete('images/'.$about_pic->value);
             }
-            $imageName = time().'.'.$request->story_pic->extension();  
-            $request->story_pic->move(public_path('images'), $imageName);
+            $imageName = time().'.'.$request->about_pic->extension();  
+            $request->about_pic->move(public_path('images'), $imageName);
 
-            Setting::where('nama','story')->update([
-                'value'=>$request->story
+            Setting::where('nama','about')->update([
+                'value'=>$request->about
             ]);  
       
-            Setting::where('nama','story_pic')->update([
+            Setting::where('nama','about_pic')->update([
                 'value'=>$imageName
             ]);  
 
@@ -114,22 +109,29 @@ class SettingController extends Controller
 
       
 
-        return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+        return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
       }
 
-    
-    public function parallax_update(Request $request){
-        $parallax=Setting::where('nama','parallax')->first();
+        public function blog(){
+        return view('admin.setting.pages.blog',[
+            'blog_pic'=>Setting::where('nama','blog_pic')->first(),
+        ]);
+    }
 
-        if($request->hasFile('parallax')){
-            if(File::exists('images/'.$parallax->value)){
-                File::delete('images/'.$parallax->value);
+   
+
+    
+    public function blog_update(Request $request){
+        $blog_pic=Setting::where('nama','blog_pic')->first();
+
+        if($request->hasFile('blog_pic')){
+            if(File::exists('images/'.$blog_pic->value)){
+                File::delete('images/'.$blog_pic->value);
             }
-            $imageName = time().'.'.$request->parallax->extension();  
-            $request->parallax->move(public_path('images'), $imageName);
+            $imageName = time().'.'.$request->blog_pic->extension();  
+            $request->blog_pic->move(public_path('images'), $imageName);
 
-    
-            Setting::where('nama','parallax')->update([
+            Setting::where('nama','blog_pic')->update([
                 'value'=>$imageName
             ]);  
 
@@ -137,24 +139,85 @@ class SettingController extends Controller
 
       
 
-        return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+        return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
       }
 
-      public function quote(){
-          return view('admin.setting.quote',[
+
+        public function gallery(){
+        return view('admin.setting.pages.gallery',[
+            'gallery_pic'=>Setting::where('nama','gallery_pic')->first(),
+        ]);
+    }
+
+   
+
+    
+    public function gallery_update(Request $request){
+        $gallery_pic=Setting::where('nama','gallery_pic')->first();
+
+        if($request->hasFile('gallery_pic')){
+            if(File::exists('images/'.$gallery_pic->value)){
+                File::delete('images/'.$gallery_pic->value);
+            }
+            $imageName = time().'.'.$request->gallery_pic->extension();  
+            $request->gallery_pic->move(public_path('images'), $imageName);
+
+            Setting::where('nama','gallery_pic')->update([
+                'value'=>$imageName
+            ]);  
+
+        }
+
+      
+
+        return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
+      }
+
+  
+
+      public function home(){
+          return view('admin.setting.pages.home',[
               'quote'=>Setting::where('nama','quote')->first(),
+              'quote_bg'=>Setting::where('nama','quote_bg')->first(),
               'quote_author'=>Setting::where('nama','quote_author')->first()
           ]);
       }
 
-      public function quote_update(Request $request){
-          Setting::where('nama','quote')->update([
-            'value'=>$request->quote
-          ]);
+      public function home_update(Request $request){
+      
+          
+          $quote_bg=Setting::where('nama','quote_bg')->first();
 
-          Setting::where('nama','quote_author')->update([
-            'value'=>$request->quote_author
-          ]);
+
+           if($request->hasFile('quote_bg')){
+            if(File::exists('images/'.$quote_bg->value)){
+                File::delete('images/'.$quote_bg->value);
+            }
+            $imageName = time().'.'.$request->quote_bg->extension();  
+            $request->quote_bg->move(public_path('images'), $imageName);
+
+            Setting::where('nama','quote')->update([
+                'value'=>$request->quote
+              ]);
+    
+              Setting::where('nama','quote_author')->update([
+                'value'=>$request->quote_author
+              ]);
+      
+            Setting::where('nama','quote_bg')->update([
+                'value'=>$imageName
+            ]);  
+
+        }else{
+            Setting::where('nama','quote')->update([
+                'value'=>$request->quote
+              ]);
+    
+              Setting::where('nama','quote_author')->update([
+                'value'=>$request->quote_author
+              ]);
+                    
+        }
 
           return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
       }

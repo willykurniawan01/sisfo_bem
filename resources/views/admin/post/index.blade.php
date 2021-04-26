@@ -6,40 +6,19 @@
           <!-- Page Heading -->
 
           <div class="row">
-            <div class="col-12 col-md-3 mb-3 mb-md-0">
-              <div class="card" style="width: 100%;">
-                <div class="card-header">
-                  Kategori Post
-                </div>
-                <ul class="list-group list-group-flush">
-                  @forelse ($category as $item)
-                  <li class="list-group-item d-flex justify-content-between">
-                    {{ $item->nama }} 
-                    <form method="POST" action="{{ route('post_category.destroy',$item->id) }}" class="form-inline">
-                      @csrf
-                      @method('delete')
-                      <button class="badge btn btn-sm btn-danger">Hapus</button>
-                  </form></li>
-                  @empty
-                  <li class="list-group-item text-center">Tidak ada kategori</li>
-                  @endforelse
-                  <li class="list-group-item"><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" >Tambah</button></li>
-                </ul>
-              </div>
-            </div>
-
             <div class="col-12 col-md-9">
               
-               <a href="{{ route('post.create') }}" class="btn btn-sm btn-primary">Tambah</a>
-          
 
               <!-- DataTales Example -->
-              <div class="card shadow mb-4 mt-3">
+              <div class="card shadow mb-4">
                   <div class="card-header py-3">
                       <h6 class="m-0 font-weight-bold text-primary">Data Post</h6>
                   </div>
                   <div class="card-body">
-                      <div class="table-responsive">
+                    
+                      <a href="{{ route('post.create') }}" class="btn btn-sm btn-primary"> <i class="fa fa-plus"></i> Tambah</a>
+          
+                      <div class="table-responsive mt-3">
                           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                               <thead>
                                   <tr>
@@ -59,9 +38,8 @@
                                     <td> <form method="POST" action="{{ route('post.destroy',$item->id) }}" class="form-inline d-flex justify-content-center">
                                       @csrf
                                       @method('delete')
-                                      <button type="submit" class="btn btn-danger">Hapus</button>
-                                      <a href="{{ route('post.edit',$item->id) }}" class="btn btn-info ml-2"> Edit</a>
-                                      <a href="{{ route('kehadiran.show',$item->id) }}" class="btn btn-success ml-2"> Kehadiran</a>
+                                      <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                      <a href="{{ route('post.edit',$item->id) }}" class="btn btn-success ml-2"><i class="fas fa-edit"></i></a>
                                     </form></td>
                                   </tr>
                                 @empty
@@ -76,6 +54,30 @@
                   </div>
               </div>
             </div>
+
+            <div class="col-12 col-md-3 mb-3 mb-md-0">
+              <div class="card" style="width: 100%;">
+                <div class="card-header">
+                  Kategori Post
+                </div>
+                <ul class="list-group list-group-flush">
+                  @forelse ($category as $item)
+                  <li class="list-group-item d-flex justify-content-between">
+                    {{ $item->nama }} 
+                    <form method="POST" action="{{ route('post_category.destroy',$item->id) }}" class="form-inline">
+                      @csrf
+                      @method('delete')
+                      <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                  </form></li>
+                  @empty
+                  <li class="list-group-item text-center">Tidak ada kategori</li>
+                  @endforelse
+                  <li class="list-group-item"><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" > <i class="fa fa-plus"></i> Tambah</button></li>
+                </ul>
+              </div>
+            </div>
+
+         
           </div>
 
       </div>

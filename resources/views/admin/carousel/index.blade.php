@@ -7,7 +7,13 @@
 
           <div class="row">
             <div class="col-3">
-              <a href="{{ route('carousel.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+              <a href="{{ route('setting.home') }}" class="btn btn-lg btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-3">
+              <a href="{{ route('carousel.create') }}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> Tambah</a>
             </div>
           </div>
         
