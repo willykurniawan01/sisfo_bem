@@ -53,8 +53,7 @@
                       <div class="card-body">
                         <form method="POST" class="d-flex justify-content-around" action="{{ route('gallery.destroy',$item->id) }}">
                           @csrf
-                          @method('delete')
-                          <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                          @method('delete')     
                           <button class="btn btn-danger" data-toggle="modal"><i class="fas fa-trash-alt"></i></button>
                         </form>
                       </div>

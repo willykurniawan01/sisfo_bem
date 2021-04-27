@@ -85,8 +85,12 @@ class PostCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $category=PostCategory::find($request->id);
+        $category->post()->detach();
+        $category->delete();
+
+        return redirect()->route('post.index')->with('success','Berhasil menghapus kategori post!');
     }
 }

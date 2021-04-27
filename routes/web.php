@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Home')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/gallery', 'GalleryController@index')->name('gallery');
-    Route::get('/blog', 'BlogController@index')->name('blog');
-    Route::get('/blog/category/{category}', 'BlogController@category')->name('blog.category');
-    Route::get('/blog/post/{post}', 'BlogController@detail')->name('blog.detail');
+    Route::get('/berita', 'BlogController@index')->name('blog');
+    Route::get('/berita/category/{id}', 'BlogController@category')->name('blog.category');
+    Route::get('/berita/post/{post}', 'BlogController@detail')->name('blog.detail');
     Route::get('/about', 'HomeController@about')->name('about');
     Route::get('/demisioner', 'DemisionerController@index')->name('demisioner');
     Route::get('/anggota','AnggotaController@index')->name('anggota');
@@ -73,6 +73,7 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','web'])->group(fu
 
 
     Route::resource('post', 'PostController');
+    
     Route::resource('post_category', 'PostCategoryController');
     
     Route::resource('gallery_category', 'GalleryCategoryController');

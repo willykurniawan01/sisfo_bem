@@ -28,7 +28,6 @@
                     <form method="POST" class="d-flex justify-content-around" action="{{ route('carousel.destroy',$item->id) }}">
                       @csrf
                       @method('delete')
-                      <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                       <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                     </form>
                   </div>

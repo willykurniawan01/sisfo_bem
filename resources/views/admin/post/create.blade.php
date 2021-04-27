@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Tambah Post')
+@section('title','Buat Postingan')
 @section('content')
       <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -15,22 +15,22 @@
           <div class="col-12 col-md-8">
             <div class="card shadow mb-4 mt-3">
               <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Tambah post BEM STMIK AMIK RIAU</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Buat Postingan</h6>
               </div>
               <div class="card-body">
                      <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
                       @csrf
                          
                           <div class="form-group">
-                            <label for="">Judul post : </label>
+                            <label for="">Judul : </label>
                             <input name="judul"  value="{{ old('judul') }}" type="text" class="form-control @error('judul') is-invalid @enderror">
                             @error('judul')
                               <div class="alert alert-danger mt-2">{{ $message }}</div>
-                            @enderror
+                          @enderror
                           </div>
 
                           <div class="form-group">
-                            <label for="">Picture</label>
+                            <label for="">Picture :</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -46,25 +46,24 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="">Kategori</label>
-                          <div class="input-group"s>
-                            <div class="input-group-prepend">
-                              <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                          <label for="">Kategori :</label>
+                          @forelse ($category as $item)
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="{{ 'customCheck'.$loop->iteration }}" value="{{ $item->id }}" name="post_category_id[]">
+                              <label class="custom-control-label" for="{{ 'customCheck'.$loop->iteration }}">{{ $item->nama }}</label>
                             </div>
-                            <select name="post_category_id" class="custom-select" id="inputGroupSelect01">
-                              <option value="" selected>Choose...</option>
-                              @foreach ($category as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                              @endforeach   
-                            </select>
+                          @empty
+                          <div class="alert alert-warning" role="alert">
+                          Data kategori kosong! anda dapat menambahkan data kategori terlebih dahulu!
                           </div>
+                          @endforelse
                           @error('post_category_id')
                           <div class="alert alert-danger mt-2">{{ $message }}</div>
                           @enderror 
                         </div>
                          
                           <div class="form-group">
-                            <label for="">Isi</label>
+                            <label for="">Isi :</label>
                             <textarea name="isi" id="editor" >
 
                             </textarea>

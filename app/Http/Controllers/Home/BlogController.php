@@ -10,52 +10,34 @@ use App\PostCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BlogController extends Controller
+class BlogController extends BaseController
 {
     public function index(){
 
-        return view('home.blog.index',[
-            'post'=>Post::with('user')->paginate(10),
-            'category'=>PostCategory::all(),
-            'blog_pic'=>Setting::where('nama','blog_pic')->first(),
-            'gallery'=>Gallery::paginate(12),
-            'instagram'=>Setting::where('nama','instagram')->first(),
-            'facebook'=>Setting::where('nama','facebook')->first(),
-            'alamat'=>Setting::where('nama','alamat')->first(),
-            'phone'=>Setting::where('nama','phone')->first(),
-            'email'=>Setting::where('nama','email')->first(),
-            'pages'=>Page::all()
-        ]);
+        $post=Post::with('user')->paginate(10);
+        $category=PostCategory::all();
+        $gallery=Gallery::paginate(12);       
+
+        return view('home.blog.index',compact('post','category','gallery',));
+
     }
 
-    public function category(PostCategory $category){
-        return view('home.blog.index',[
-            'post'=>$category->posts,
-            'category'=>PostCategory::all(),
-            'parallax'=>Setting::where('nama','parallax')->first(),
-            'gallery'=>Gallery::paginate(12),
-            'instagram'=>Setting::where('nama','instagram')->first(),
-            'facebook'=>Setting::where('nama','facebook')->first(),
-            'alamat'=>Setting::where('nama','alamat')->first(),
-            'phone'=>Setting::where('nama','phone')->first(),
-            'email'=>Setting::where('nama','email')->first(),
-            'pages'=>Page::all()
-        ]);
+    public function category($id){
+        $post_category=PostCategory::findOrFail($id);
+        $post=$post_category->post()->paginate(10);
+        $category=PostCategory::all();
+        $gallery=Gallery::paginate(12);
+      
+
+        return view('home.blog.index',compact('post','category','gallery'));
     }
 
     public function detail(Post $post){
+
+        $category=PostCategory::all();
+        $gallery=Gallery::paginate(12);
+
+        return view('home.blog.detail',compact('post','category','gallery'));
      
-        return view('home.blog.detail',[
-            'post'=>$post,
-            'category'=>PostCategory::all(),
-            'gallery'=>Gallery::paginate(12),
-            'instagram'=>Setting::where('nama','instagram')->first(),
-            'facebook'=>Setting::where('nama','facebook')->first(),
-            'alamat'=>Setting::where('nama','alamat')->first(),
-            'phone'=>Setting::where('nama','phone')->first(),
-            'email'=>Setting::where('nama','email')->first(),
-            'parallax'=>Setting::where('nama','parallax')->first(),
-            'pages'=>Page::all()
-        ]);
     }
 }

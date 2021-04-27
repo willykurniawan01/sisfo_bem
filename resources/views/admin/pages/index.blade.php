@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','page')
+@section('title','Halaman')
 @section('content')
         <!-- Begin Page Content -->
         <div class="container-fluid">

@@ -13,12 +13,42 @@ class SettingSeeder extends Seeder
     public function run()
     {
         Setting::create([
-            'nama'=>'parallax',
+            'nama'=>'about',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'about_pic',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'blog',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'blog_pic',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'gallery',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'gallery_pic',
             'value'=>''
         ]);
 
         Setting::create([
             'nama'=>'quote',
+            'value'=>''
+        ]);
+
+        Setting::create([
+            'nama'=>'quote_bg',
             'value'=>''
         ]);
 

@@ -1,10 +1,10 @@
 @extends('layouts.home')
-@section('title','Post Detail')
+@section('title','Berita')
 @section('content')
     	<!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset('images/'.$parallax_pic->value) }}); background-attachment:fixed;">
+	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset('images/'.$blog_pic->value) }}); background-attachment:fixed;">
 		<h2 class="tit6 t-center">
-			Blog
+			Berita
 		</h2>
 	</section>
 
@@ -39,9 +39,9 @@
 						<div class="blo4 p-b-63">
 							<!-- - -->
 							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-								<a href="blog-detail.html">
+								
 									<img src="{{ $post->picture }}">
-								</a>
+								
 
 								<div class="date-blo4 flex-col-c-m">
 									<span class="txt30 m-b-4">
@@ -72,8 +72,10 @@
 									</span>
 
 									<span>
+									@if (!empty($post->category->nama))
 										{{ $post->category->nama }}
 										<span class="m-r-6 m-l-4">|</span>
+									@endif
 									</span>
 
 								</div>
@@ -102,12 +104,14 @@
 							</h4>
 
 							<ul>
-                                @foreach ($category as $item)
-                                    <li class="bo5-b p-t-8 p-b-8">
-                                        <a href="#" class="txt27">
-                                            {{ $item->nama }}
-                                    </li>
-                                @endforeach
+							@if (!empty($category))
+								@foreach ($category as $item)
+									<li class="bo5-b p-t-8 p-b-8">
+									<a href="#" class="txt27">
+										{{ $item->nama }}
+									</li>
+								@endforeach	
+							@endif	
 							</ul>
 						</div>
 

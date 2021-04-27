@@ -13,7 +13,7 @@ class CreatePostCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_categories', function (Blueprint $table) {
+        Schema::create('postcategory', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->timestamps();

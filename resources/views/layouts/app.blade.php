@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BEM SAR Admin | @yield('title')</title>
+    <title>BEM Admin | @yield('title')</title>
 
     <link rel="icon" href="{{ asset('images/logo.png') }}">
 
@@ -89,7 +89,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="{{ route('page.index') }}">Halaman</a>
-                        <a class="collapse-item" href="{{ route('post.index') }}">Post</a>
+                        <a class="collapse-item" href="{{ route('post.index') }}">Postingan</a>
                         <a class="collapse-item" href="{{ route('gallery.index') }}">Gallery</a>
                     </div>
                 </div>

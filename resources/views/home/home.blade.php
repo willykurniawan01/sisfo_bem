@@ -119,7 +119,7 @@
                   </div>
   
                   <div class="wrap-text-blo1 p-t-35">
-                    <a href="#">
+                    <a href="{{ route('blog.detail',$item->id) }}">
                       <h4 class="txt5 color0-hov trans-0-4 m-b-13">
                         {{ $item->judul }}
                       </h4>

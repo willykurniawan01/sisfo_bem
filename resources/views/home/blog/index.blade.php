@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('title','Blog')
+@section('title','Berita')
 
 @section('content')
     
@@ -8,7 +8,7 @@
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset('images/'.$blog_pic->value) }});background-attachment:fixed;">
 		<h2 class="tit6 t-center">
-			Blog
+			Berita
 		</h2>
 	</section>
 
@@ -35,6 +35,7 @@
 					<div class="p-t-80 p-b-124 bo5-r h-full p-r-50 p-r-0-md bo-none-md">
 						<!-- Block4 -->
 
+						
                         @foreach ($post as $item)
                         <div class="blo4 p-b-63">
 							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
@@ -70,7 +71,14 @@
 									</span>
 
 									<span>
-										{{ $item->category->nama }}
+										@if(!empty( $item->category ))
+											@forelse ($item->category as $post_category)
+											{{ $post_category->nama }}
+											<span class="m-r-6 m-l-4">|</span>
+											@empty
+												
+											@endforelse
+										@endif
 									</span>
 
 								</div>
@@ -78,7 +86,6 @@
 								<p>
 									{!!  (str_word_count($item->isi) > 60 ? substr($item->isi,0,200)." ..." : $item->isi)   !!}
 								</p>
-
 								<a href="{{ route('blog.detail',$item->id) }}" class="dis-block txt4 m-t-30">
 									Continue Reading
 									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>

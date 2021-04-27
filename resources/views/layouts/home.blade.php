@@ -96,7 +96,10 @@
                           <a href="{{ route('about') }}">About</a>
                         </li>
                         <li>
-                          <a href="{{ route('blog') }}">Blog</a>
+                          <a href="{{ route('blog') }}">Berita</a>
+                        </li>
+                        <li>
+                          <a href="{{ route('demisioner') }}">Anggota</a>
                         </li>
                         <li>
                           <a href="{{ route('demisioner') }}">Demisioner</a>
@@ -140,11 +143,17 @@
     
     
             <li class="t-center m-b-13">
-              <a href="{{ route('blog') }}" class="txt19">Blog</a>
+              <a href="{{ route('blog') }}" class="txt19">Berita</a>
             </li>
     
             <li class="t-center m-b-13">
               <a href="{{ route('about') }}" class="txt19">About</a>
+            </li>
+            <li class="t-center m-b-13">
+              <a href="{{ route('about') }}" class="txt19">Anggota</a>
+            </li>
+            <li class="t-center m-b-13">
+              <a href="{{ route('about') }}" class="txt19">Demisioner</a>
             </li>
             
             <li class="t-center m-b-13">

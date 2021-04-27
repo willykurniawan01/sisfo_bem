@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('Api')->group(function () {   
     Route::resource('anggota', 'AnggotaController');
-    Route::resource('Kehadiran', 'KehadiranController');
+    // Route::resource('Kehadiran', 'KehadiranController');
 });

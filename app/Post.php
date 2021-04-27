@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $table='post';
+
     protected $fillable=['judul','isi','picture','user_id','post_category_id'];
 
     public function user(){
@@ -13,6 +15,6 @@ class Post extends Model
     }
 
     public function category(){
-        return $this->belongsTo('App\PostCategory','post_category_id');
+        return $this->belongsToMany('App\PostCategory','post_postcategory','post_id','postcategory_id');
     }
 }

@@ -48,23 +48,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'judul'=>'required|string',
             'isi'=>'required',
             'picture'=>'image|mimes:jpeg,png,jpg,gif,svg',
-            'post_category_id'=>'required|numeric',
         ]);
-
+        
         $imageName = time().'.'.$request->picture->extension();  
         $request->picture->move(public_path('images'), $imageName);
 
-        Post::create([
+        $post=Post::create([
             'judul'=>$request->judul,
             'isi'=>$request->isi,
             'user_id'=>Auth::user()->id,
             'picture'=>URL::to('images').'/'.$imageName,
-            'post_category_id'=>$request->post_category_id
         ]);
+
+        $post->category()->attach($request->post_category_id);
+
+
 
         return redirect()->route('post.index')->with('success','Berhasil Menambahkan Post!');
 
@@ -89,10 +92,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.post.edit',[
-            'post'=>Post::findOrFail($id),
-            'category'=>PostCategory::all()
-        ]);
+        $post=Post::findOrFail($id);
+        $category=PostCategory::all();
+        return view('admin.post.edit',compact('post','category'));
     }
 
     /**
@@ -105,6 +107,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post=Post::findOrFail($id);
+
         $picture=explode('/',$post->picture);
 
         //cek ada gambar atau tidak
@@ -120,12 +123,16 @@ class PostController extends Controller
                 'isi'=>$request->isi,
                 'user_id'=>Auth::user()->id,
                 'picture'=>URL::to('images').'/'.$imageName,
-                'post_category_id'=>$request->post_category_id
             ]);
-        }else{
-            $post->update($request->except('_token'));
-        }
 
+        }else{
+            $post->update($request->except('_token','post_category_id'));
+        }
+        
+        //sinkornisasi relasi category tanpa duplikat
+        $post->category()->sync($request->post_category_id);
+        
+        return redirect()->route('post.index')->with('success','Berhasil Mengupdate Post!');
     }
 
     /**
@@ -134,15 +141,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $post=Post::findOrFail($id);
+        $post=Post::findOrFail($request->id);
         $picture=explode('/',$post->picture);
       
         if(File::exists('images/'.$picture[4])){ 
         File::delete('images/'.$picture[4]);
-        Post::destroy($id);
+        $post->category()->detach();
+        $post->delete();
         }
+        
         
         return redirect()->route('post.index')->with('success','Berhasil Menghapus Post!');
     }
