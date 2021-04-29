@@ -15,7 +15,7 @@
           <div class="col-12 col-md-8">
             <div class="card shadow mb-4 mt-3">
               <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Halaman Blog</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Halaman Berita</h6>
               </div>
               <div class="card-body">
                      <form method="POST" action="{{ route('setting.blog.update') }}" enctype="multipart/form-data">

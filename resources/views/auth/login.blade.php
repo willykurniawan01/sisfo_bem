@@ -40,11 +40,6 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    @if ($errors->any())
-                                    <div class="alert alert-danger" role="alert">
-                                        Your credentials are incorrect!
-                                    </div>   
-                                    @endif
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
@@ -104,6 +99,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('asset/admin/js/sb-admin-2.min.js') }}"></script>
+    @include('sweetalert::alert')
 
 </body>
 

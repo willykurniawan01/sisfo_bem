@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
@@ -173,17 +175,20 @@ class SettingController extends Controller
         return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
       }
 
+      public function home(){
+        return view('admin.setting.pages.home');
+      }
   
 
-      public function home(){
-          return view('admin.setting.pages.home',[
+      public function quote(){
+          return view('admin.setting.quote',[
               'quote'=>Setting::where('nama','quote')->first(),
               'quote_bg'=>Setting::where('nama','quote_bg')->first(),
               'quote_author'=>Setting::where('nama','quote_author')->first()
           ]);
       }
 
-      public function home_update(Request $request){
+      public function quote_update(Request $request){
       
           
           $quote_bg=Setting::where('nama','quote_bg')->first();
@@ -219,7 +224,7 @@ class SettingController extends Controller
                     
         }
 
-          return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+          return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
       }
 
 
@@ -235,10 +240,42 @@ class SettingController extends Controller
           ]);
       }
 
+      public function password_update(Request $request)
+      {
 
-      public function updatepassword(){
-         return redirect()->route('setting.akun')->with('success','Berhasil merubah password!');
+        $rules=[
+            'old_password'=>'required',
+            'new_password'=>'required',
+            'new_password_confirm'=>'required|same:new_password',
+        ];
+
+
+        $messages=[
+            'old_password.required'=>'password lama tidak boleh kosong!',
+            'new_password.required'=>'password baru tidak boleh kosong!',
+            'new_password_confirm.required'=>'konfirmasi password baru tidak boleh kosong!',
+            'new_password_confirm.same'=>'konfirmasi password baru harus sama dengan password baru!',
+        ];
+
+        $validator=Validator::make($request->all(),$rules,$messages);
+
+        //cek jika validasi gagal
+        if($validator->fails()){
+            return back()->with('toast_error','Gagal! Pastikan input benar!')->withErrors($validator)->withInput();
+        }
+
+
+        $user=User::findOrFail(Auth::user()->id);
+
+        $user->update([
+            'password'=>bcrypt($request->new_password)
+        ]);
+
+        Auth::logout();   
+
+        return redirect()->route('login')->with('toast_success','Berhasil mengubah password! Silahkan login kembali!');
       }
+
 
     
 

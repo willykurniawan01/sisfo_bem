@@ -44,7 +44,7 @@
                                   </tr>
                                   <tr>
                                     <td class="text-center">3</td>
-                                    <td class="text-center">Blog</td>
+                                    <td class="text-center">Berita</td>
                                     <td class="text-center"><a href="{{ route('setting.blog') }}" class="btn btn-success"><i class="fas fa-wrench"></i></a></td>
                                   </tr>
 

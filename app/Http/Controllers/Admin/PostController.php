@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\PostCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -49,11 +50,26 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
+        $rules=[
             'judul'=>'required|string',
             'isi'=>'required',
-            'picture'=>'image|mimes:jpeg,png,jpg,gif,svg',
-        ]);
+            'picture'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ];
+
+        $messages=[
+            'judul.required'=>'judul tidak boleh kosong!',
+            'judul.string'=>'judul harus berupa huruf!',
+            'isi.required'=>'isi tidak boleh kosong!',
+            'picture.required'=>'gambar tidak boleh kosong!',
+            'picture.image'=>'file harus berupa gambar!',
+            'picture.mimes'=>'format file tidak di izinkan!'
+        ];
+
+        $validator=Validator::make($request->all(),$rules,$messages);
+
+        if($validator->fails()){
+            return back()->with('toast_error','Gagal! Periksa kembali input!')->withErrors($validator->errors())->withInput();
+        }
         
         $imageName = time().'.'.$request->picture->extension();  
         $request->picture->move(public_path('images'), $imageName);

@@ -35,7 +35,7 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ $item->judul }}</td>
                                     <td class="text-center"><img src="{{ $item->picture }}" style="width:100px; height:100px;" alt=""></td>
-                                    <td> 
+                                    <td class="text-center"> 
                                     <button type="button" data-toggle="modal" data-target="#deletePost" data-whatever="{{ $item->id }}" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                     <a href="{{ route('post.edit',$item->id) }}" class="btn btn-success ml-2"><i class="fas fa-edit"></i></a>
                                   </td>

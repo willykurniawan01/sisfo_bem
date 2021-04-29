@@ -45,7 +45,7 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','web'])->group(fu
     Route::get('/s/p/about', 'SettingController@about')->name('setting.about');
     Route::post('/s/p/about/update', 'SettingController@about_update')->name('setting.about.update');
     
-    Route::get('/s/p/blog', 'SettingController@blog')->name('setting.blog');
+    Route::get('/s/p/berita', 'SettingController@blog')->name('setting.blog');
     Route::post('/s/p/blog/update', 'SettingController@blog_update')->name('setting.blog.update');
     
     Route::get('/s/p/gallery', 'SettingController@gallery')->name('setting.gallery');
@@ -53,12 +53,14 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','web'])->group(fu
 
 
     Route::get('/s/p/home', 'SettingController@home')->name('setting.home');
-    Route::post('/s/p/home/update', 'SettingController@home_update')->name('setting.home.update');
 
     Route::get('/s/akun', 'SettingController@akun')->name('setting.akun');
+    Route::get('/s/quote', 'SettingController@quote')->name('setting.quote');
+    Route::post('/s/quote/update', 'SettingController@quote_update')->name('setting.quote.update');
+
     Route::get('/s/gantipassword', 'SettingController@gantipassword')->name('setting.gantipassword');
 
-    Route::post('/s/updatepassword/{id}', 'SettingController@updatepassword')->name('setting.updatepassword');
+    Route::post('/s/password_update', 'SettingController@password_update')->name('setting.password_update');
 
 
     

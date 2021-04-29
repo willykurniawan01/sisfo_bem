@@ -37,36 +37,7 @@
                     <div class="alert alert-info" role="alert">
                         Anda dapat mengatur quote pada halaman home!
                       </div>
-                    <form method="POST" action="{{ route('setting.home.update') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="">Quote</label>
-                            <input name="quote" type="text" value="{{ $quote->value }}" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Author</label>
-                            <input name="quote_author" type="text" value="{{ $quote_author->value }}" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Quote Background :</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                </div>
-                                <div class="custom-file">
-                                  <input type="file" name="quote_bg" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                              </div>                
-                        </div>
-                  
-                        <div class="button group">
-                            <button type="submit" class="btn btn-primary">
-                                Simpan
-                            </button>
-                        </div>
-                    </form>
+                      <a href="{{ route('setting.quote') }}" class="btn btn-success"> <i class="fas fa-wrench"></i> Kelola</a>                 
                 </div>
             </div>
         </div>
