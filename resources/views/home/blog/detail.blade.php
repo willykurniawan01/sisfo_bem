@@ -62,7 +62,7 @@
 
 								<div class="txt32 flex-w p-b-24">
 									<span>
-										by {{ $post->user->name }}
+										by {{ $post->user->username }}
 										<span class="m-r-6 m-l-4">|</span>
 									</span>
 

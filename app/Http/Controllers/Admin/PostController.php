@@ -85,7 +85,7 @@ class PostController extends Controller
 
 
 
-        return redirect()->route('post.index')->with('success','Berhasil Menambahkan Post!');
+        return redirect()->route('post.index')->with('toast_success','Berhasil Menambahkan Post!');
 
     }
 
@@ -148,7 +148,7 @@ class PostController extends Controller
         //sinkornisasi relasi category tanpa duplikat
         $post->category()->sync($request->post_category_id);
         
-        return redirect()->route('post.index')->with('success','Berhasil Mengupdate Post!');
+        return redirect()->route('post.index')->with('toast_success','Berhasil Mengupdate Post!');
     }
 
     /**
@@ -169,6 +169,6 @@ class PostController extends Controller
         }
         
         
-        return redirect()->route('post.index')->with('success','Berhasil Menghapus Post!');
+        return redirect()->route('post.index')->with('toast_success','Berhasil Menghapus Post!');
     }
 }

@@ -7,6 +7,7 @@ use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use App\Rules\SameWithOldPassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -170,7 +171,6 @@ class SettingController extends Controller
 
         }
 
-      
 
         return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
       }
@@ -235,6 +235,7 @@ class SettingController extends Controller
       }
 
       public function gantipassword(){
+          
           return view('admin.setting.gantipassword',[
               'user'=>Auth::user()
           ]);
@@ -244,7 +245,7 @@ class SettingController extends Controller
       {
 
         $rules=[
-            'old_password'=>'required',
+            'old_password'=>['required',new SameWithOldPassword],
             'new_password'=>'required',
             'new_password_confirm'=>'required|same:new_password',
         ];

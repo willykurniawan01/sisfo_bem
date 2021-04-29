@@ -6,28 +6,7 @@
           <!-- Page Heading -->
 
           <div class="row mt-3">
-            <div class="col-12 col-md-3 mb-3 mb-md-0">
-              <div class="card" style="width: 100%;">
-                <div class="card-header">
-                  Kategori Gallery
-                </div>
-                <ul class="list-group list-group-flush">
-                  @forelse ($category as $item)
-                  <li class="list-group-item d-flex justify-content-between">
-                    {{ $item->nama }} 
-                    <form method="POST" action="{{ route('gallery_category.destroy',$item->id) }}" class="form-inline">
-                      @csrf
-                      @method('delete')
-                      <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                  </form></li>
-                  @empty
-                  <li class="list-group-item text-center">Tidak ada kategori</li>
-                  @endforelse
-                  <li class="list-group-item"><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" >Tambah</button></li>
-                </ul>
-              </div>
-            </div>
-
+           
 
               <div class="col-md-9">
                 <div class="row mb-3">
@@ -70,6 +49,29 @@
                   </div>
                 </div>
               </div>
+
+              <div class="col-12 col-md-3 mb-3 mb-md-0">
+                <div class="card" style="width: 100%;">
+                  <div class="card-header">
+                    Kategori Gallery
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    @forelse ($category as $item)
+                    <li class="list-group-item d-flex justify-content-between">
+                      {{ $item->nama }} 
+                      <form method="POST" action="{{ route('gallery_category.destroy',$item->id) }}" class="form-inline">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </form></li>
+                    @empty
+                    <li class="list-group-item text-center">Tidak ada kategori</li>
+                    @endforelse
+                    <li class="list-group-item"><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" >Tambah</button></li>
+                  </ul>
+                </div>
+              </div>
+  
 
           </div>
           

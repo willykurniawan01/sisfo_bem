@@ -61,7 +61,7 @@
 
 								<div class="txt32 flex-w p-b-24">
 									<span>
-										by {{ $item->user->name }}
+										by {{ $item->user->username }}
 										<span class="m-r-6 m-l-4">|</span>
 									</span>
 

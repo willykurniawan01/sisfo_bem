@@ -18,13 +18,18 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Pengaturan Akun</h6>
                 </div>
-                <div class="card-body px-5">
+                <div class="card-body">
                         <div class="row">
+                            <div class="col-5">
+                                <ul style="list-style: none;">
+                                    <li>
+                                        <img class="img-profile img-thumbnail" src="{{ asset($user->picture) }}" alt=""></li>
+                                    <li class="mt-3">
+                                        <a href="" class="btn btn-primary"> <i class="fas fa-user-edit"></i> Ubah Gambar</a>
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="col-6">
-                                <div class="form-group">
-                                    <label for="">Nama :</label>
-                                    <input name="name" type="text" disabled value="{{ $user->name }}" class="form-control">
-                                </div>
                                 
                                 <div class="form-group">
                                     <label for="">Username :</label>
@@ -38,15 +43,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-6 text-center">
-                                <ul style="list-style: none;">
-                                    <li>
-                                        <img class="img-profile img-thumbnail" src="{{ asset($user->picture) }}" alt=""></li>
-                                    <li class="mt-3">
-                                        <a href="" class="btn btn-primary"> <i class="fas fa-user-edit"></i> Ubah Gambar</a>
-                                    </li>
-                                </ul>
-                            </div>
+                           
                         </div>
                 </div>
             </div>

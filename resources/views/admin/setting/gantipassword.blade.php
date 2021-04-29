@@ -8,7 +8,7 @@
     
     <div class="row">
         <div class="col-3">
-          <a href="{{ route('setting.index') }}" class="btn btn-lg btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+          <a href="{{ route('setting.akun') }}" class="btn btn-lg btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
         </div>
       </div>
 

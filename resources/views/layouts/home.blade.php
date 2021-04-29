@@ -369,5 +369,6 @@
     @stack('gallery')
 
     <script src="{{ asset('asset/home/js/main.js') }}"></script>
+    @include('sweetalert::alert')
   </body>
 </html>
