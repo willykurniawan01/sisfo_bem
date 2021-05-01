@@ -42,7 +42,7 @@ class PostCategoryController extends Controller
 
         PostCategory::create($request->except('_token'));
             
-        return redirect()->route('post.index')->with('success','Berhasil Menambahkan Kategori Post!');
+        return redirect()->route('post.index')->with('toast_success','Berhasil Menambahkan Kategori Post!');
     }
 
     /**
@@ -91,6 +91,6 @@ class PostCategoryController extends Controller
         $category->post()->detach();
         $category->delete();
 
-        return redirect()->route('post.index')->with('success','Berhasil menghapus kategori post!');
+        return redirect()->route('post.index')->with('toast_success','Berhasil menghapus kategori post!');
     }
 }

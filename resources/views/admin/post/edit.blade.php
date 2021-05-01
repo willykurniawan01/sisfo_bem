@@ -12,7 +12,7 @@
         </div>
 
         <div class="row">
-          <div class="col-12">
+          <div class="col-10">
             <div class="card shadow mb-4 mt-2">
               <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Edit Post</h6>
@@ -21,14 +21,8 @@
                      <form class="d-flex flex-column" method="POST" action="{{ route('post.update',$post->id) }}" enctype="multipart/form-data">
                       @csrf
                       @method("PUT")
-                         <div class="form-group">
-                           <img class="img-post img-thumbnail" src="{{ $post->picture }}" alt=""> 
-                         </div>
-
-                         <div class="form-group">
-                          <button type="button" class="btn btn-success" id="btn-ganti">Ganti Gambar</button>
-                          <input type="file" name="picture" class="d-none" id="input-picture">
-                         </div>
+                      
+                        
 
                       
 
@@ -39,6 +33,20 @@
                               <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror
                           </div>
+
+                          <div class="form-group">
+                            <label for="">Picture :</label>
+                            <div class="input-group">
+                              <button type="button" class="btn btn-sm btn-success" id="btn-ganti">Ganti Gambar</button>
+                              <input id="input-picture" type="file" name="picture" class="d-none">
+                            </div>
+                          
+                            <img id="post-picture" class="img-thumbnail mt-2 img-fluid" src="{{ $post->picture }}" alt=""> 
+                           </div>
+
+                          <div class="form-group">
+                              </div>
+ 
 
                        
 
@@ -75,7 +83,7 @@
                          
                       <div class="row mt-3">
                         <div class="col-12">  
-                          <button class="btn btn-primary">Submit</button>
+                          <button class="btn btn-primary">Simpan</button>
                         </div>
                       </div>
                   
@@ -108,11 +116,28 @@
 </script>
 
 <script>
+  const post_picture= $("#post-picture");
+  const button_ganti= $("#btn-ganti");
+  const input_picture=  $("#input-picture");
+
   $(function(){
-    $("#btn-ganti").on("click",function(){
-      $("#input-picture").trigger("click")
+   button_ganti.on("click",function(){
+    input_picture.trigger("click")
     });
+
+    input_picture.on("change",function(){
+      var reader = new FileReader();
+          
+      reader.onload = function(e) {
+      post_picture.attr('src', e.target.result);
+      }
+      reader.readAsDataURL(this.files[0]); // convert to base64 string
+    });
+
+
   })
+
+
 
 </script>
 @endpush

@@ -42,7 +42,7 @@ class SettingController extends Controller
 
      
         
-      return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+      return redirect()->route('setting.index')->with('toast_success','Pengaturan Berhasil Diterapkan!');
     }
 
     public function alamat(){
@@ -76,7 +76,7 @@ class SettingController extends Controller
             'value'=>$request->longitude
         ]);  
           
-        return redirect()->route('setting.index')->with('success','Pengaturan Berhasil Diterapkan!');
+        return redirect()->route('setting.index')->with('toast_success','Pengaturan Berhasil Diterapkan!');
       }
 
 
@@ -112,7 +112,7 @@ class SettingController extends Controller
 
       
 
-        return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
+        return redirect()->route('page.index')->with('toast_success','Pengaturan Berhasil Diterapkan!');
       }
 
         public function blog(){
@@ -142,7 +142,7 @@ class SettingController extends Controller
 
       
 
-        return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
+        return redirect()->route('page.index')->with('toast_success','Pengaturan Berhasil Diterapkan!');
       }
 
 
@@ -172,7 +172,7 @@ class SettingController extends Controller
         }
 
 
-        return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
+        return redirect()->route('page.index')->with('toast_success','Pengaturan Berhasil Diterapkan!');
       }
 
       public function home(){
@@ -224,7 +224,7 @@ class SettingController extends Controller
                     
         }
 
-          return redirect()->route('page.index')->with('success','Pengaturan Berhasil Diterapkan!');
+          return redirect()->route('page.index')->with('toast_success','Pengaturan Berhasil Diterapkan!');
       }
 
 
@@ -274,7 +274,7 @@ class SettingController extends Controller
 
         Auth::logout();   
 
-        return redirect()->route('login')->with('toast_success','Berhasil mengubah password! Silahkan login kembali!');
+        return redirect()->route('login')->with('toast_toast_success','Berhasil mengubah password! Silahkan login kembali!');
       }
 
 

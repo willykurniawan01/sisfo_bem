@@ -12,7 +12,7 @@
         </div>
 
         <div class="row">
-          <div class="col-12 col-md-8">
+          <div class="col-10">
             <div class="card shadow mb-4 mt-3">
               <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Buat Postingan</h6>
@@ -31,15 +31,11 @@
 
                           <div class="form-group">
                             <label for="">Picture :</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                </div>
-                                <div class="custom-file">
-                                  <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                              </div>  
+                            <div class="input-group">
+                              <button type="button" class="btn btn-sm btn-success" id="btn-ganti">Pilih Gambar</button>
+                              <img class="d-none img-thumbnail mt-2 img-fluid" src="" alt="" id="post-picture">
+                              <input id="input-picture" type="file" name="picture" class="d-none">
+                            </div>
                               @error('picture')
                               <div class="alert alert-danger mt-2">{{ $message }}</div>
                               @enderror                        
@@ -107,5 +103,31 @@
                                 .catch( error => {
                                         console.error( error );
                                 } );
+</script>
+
+<script>
+
+const post_picture= $("#post-picture");
+  const button_ganti= $("#btn-ganti");
+  const input_picture=  $("#input-picture");
+
+  $(function(){
+   button_ganti.on("click",function(){
+    input_picture.trigger("click")
+    });
+
+    input_picture.on("change",function(){
+      var reader = new FileReader();
+          
+      reader.onload = function(e) {
+      post_picture.attr('src', e.target.result);
+      }
+      reader.readAsDataURL(this.files[0]); // convert to base64 string
+
+      post_picture.removeClass("d-none")
+    });
+
+
+  })
 </script>
 @endpush
