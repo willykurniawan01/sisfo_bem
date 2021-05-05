@@ -18,7 +18,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Halaman Berita</h6>
               </div>
               <div class="card-body">
-                     <form method="POST" actieon="{{ route('setting.blog.update') }}" enctype="multipart/form-data">
+                     <form method="POST" action="{{ route('setting.blog.update') }}" enctype="multipart/form-data">
                       @csrf  
                          
                           <div class="form-group">
@@ -27,7 +27,7 @@
                             <div class="input-group">
                               <button type="button" class="btn btn-sm btn-success" id="btn-ganti">Pilih Gambar</button>    
                               <img class="img-thumbnail mt-2 img-fluid {{ empty($gallery_pic->value) ? 'd-none' : '' }}" src="{{ !empty($gallery_pic->value) ? asset('images/'.$gallery_pic->value ) : '' }}" alt="" id="post-picture">
-                              <input id="input-picture" type="file" name="gallery_pic" class="d-none">
+                              <input id="input-picture" type="file" name="blog_pic" class="d-none">
                             </div>    
                               
                         </div>

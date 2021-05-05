@@ -51,7 +51,7 @@ class CarouselController extends Controller
             'picture'=>URL::to('images').'/'.$imageName,
         ]);
 
-        return redirect()->route('carousel.index')->with('success','Berhasil Menambahkan Carousel!');
+        return redirect()->route('carousel.index')->with('toast_success','Berhasil Menambahkan Carousel!');
     }
 
     /**
@@ -94,16 +94,16 @@ class CarouselController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        $carousel=Carousel::findOrFail($id);
+        $carousel=Carousel::findOrFail($request->id);
         $picture=explode('/',$carousel->picture);
       
         if(File::exists('images/'.$picture[4])){ 
         File::delete('images/'.$picture[4]);
-        Carousel::destroy($id);
+        Carousel::destroy($request->id);
         }
 
-        return redirect()->route('carousel.index')->with('success','Berhasil Menghapus Gambar!');
+        return redirect()->route('carousel.index')->with('toast_success','Berhasil Menghapus Gambar!');
     }
 }

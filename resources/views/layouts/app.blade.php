@@ -271,9 +271,10 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('asset/admin/js/sb-admin-2.min.js') }}"></script>
-
-    @include('sweetalert::alert')
+    
     @stack('table-script')
+    @stack('carousel')
+    @include('sweetalert::alert')
     @stack('ckeditor-script')
 
 </body>

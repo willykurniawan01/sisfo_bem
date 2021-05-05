@@ -14,25 +14,27 @@
 
         <div class="row mt-3">
             <div class="col-6">
-                <form method="POST" action="{{ route('carousel.store') }}" enctype="multipart/form-data">
-                  @csrf
-                    <div class="form-group">
-                        <label for="">Picture</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                            </div>
-                            <div class="custom-file">
-                              <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            </div>
-                          </div>  
-                          @error('picture')
-                          <div class="alert alert-danger mt-2">{{ $message }}</div>
-                          @enderror                        
-                    </div>
-                    <div class="form-group"><button type="submit" class="btn btn-primary">Submit</button></div>
-                </form>
+              <form id="input-form" method="POST" action="{{ route('carousel.store') }}" enctype="multipart/form-data">
+                @csrf  
+                <div class="form-group">
+                  <label for="">Picture :</label>
+                 
+                    <div class="input-group">
+                      <button type="button" class="btn btn-sm btn-success" id="btn-ganti">Pilih Gambar</button>    
+                      <img class="img-thumbnail mt-2 img-fluid {{ empty($gallery_pic->value) ? 'd-none' : '' }}" src="{{ !empty($gallery_pic->value) ? asset('images/'.$gallery_pic->value ) : '' }}" alt="" id="post-picture">
+                      <input id="input-picture" type="file" name="picture" class="d-none">
+                    </div>    
+                    
+              </div>
+                   
+                   
+                <div class="row mt-3">
+                  <div class="col-12">  
+                    <button id="btn-simpan" type="submit" class="btn btn-primary">Simpan</button>
+                  </div>
+                </div>
+            
+               </form>
             </div>
         </div>
           
@@ -54,4 +56,39 @@
  <!-- Page level custom scripts -->
  <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
     
+ 
+<script>
+
+  const post_picture= $("#post-picture");
+    const button_ganti= $("#btn-ganti");
+    const input_picture=  $("#input-picture");
+    const button_submit=$('#btn-simpan');
+    const input_form=$('#input-form');
+  
+    $(function(){
+     button_ganti.on("click",function(){
+      input_picture.trigger("click")
+      });
+  
+      input_picture.on("change",function(){
+        var reader = new FileReader();
+            
+        reader.onload = function(e) {
+        post_picture.attr('src', e.target.result);
+        }
+        reader.readAsDataURL(this.files[0]); // convert to base64 string
+  
+        post_picture.removeClass("d-none")
+      });
+
+      button_submit.click(function() {
+        $(this).attr('disabled', true);
+        input_form.submit();
+      });
+
+      
+    
+  
+    })
+  </script>
 @endpush

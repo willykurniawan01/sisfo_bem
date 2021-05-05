@@ -274,7 +274,7 @@ class SettingController extends Controller
 
         Auth::logout();   
 
-        return redirect()->route('login')->with('toast_toast_success','Berhasil mengubah password! Silahkan login kembali!');
+        return redirect()->route('login')->with('toast_success','Berhasil mengubah password! Silahkan login kembali!');
       }
 
 

@@ -14,7 +14,7 @@ class BlogController extends BaseController
 {
     public function index(){
 
-        $post=Post::with('user')->paginate(10);
+        $post=Post::with('user')->latest()->paginate(10);
         $category=PostCategory::all();
         $gallery=Gallery::paginate(12);       
 
@@ -24,7 +24,7 @@ class BlogController extends BaseController
 
     public function category($id){
         $post_category=PostCategory::findOrFail($id);
-        $post=$post_category->post()->paginate(10);
+        $post=$post_category->post()->latest()->paginate(10);
         $category=PostCategory::all();
         $gallery=Gallery::paginate(12);
       
