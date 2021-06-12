@@ -23,13 +23,7 @@
                       @method('PUT')
                       <div class="row">
                         <div class="col-md-5">
-                          <div class="form-group">
-                            <label for="">Kode Kegiatan : </label>
-                            <input name="kode_kegiatan" value="{{ $kegiatan->kode_kegiatan }}" type="text" class="form-control @error('kode_kegiatan') is-invalid @enderror">
-                            @error('kode_kegiatan')
-                              <div class="alert alert-danger mt-2">{{ $message }}</div>
-                            @enderror
-                          </div>
+                     
                           <div class="form-group">
                             <label for="">Nama Kegiatan : </label>
                             <input name="nama" value="{{ $kegiatan->nama }}" type="text" class="form-control @error('nama') is-invalid @enderror">

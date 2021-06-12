@@ -68,13 +68,7 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror
                           </div>
-                          <div class="form-group">
-                            <label for="">Imei : </label>
-                            <input  value="{{ $anggota->imei }}" name="imei" type="text" class="form-control @error('imei') is-invalid @enderror">
-                            @error('imei')
-                            <div class="alert alert-danger mt-2">{{ $message }}</div>
-                            @enderror
-                          </div>
+                          
                           <div class="form-group">
                             <label for="">Picture : </label>
                             <div class="input-group">

@@ -19,7 +19,6 @@
                               <tr>
                                   <th class="text-center">No</th>
                                   <th class="text-center">Nama Kegiatan</th>
-                                  <th class="text-center">Kode Kegiatan</th>
                                   <th class="text-center">Jam Mulai</th>
                                   <th class="text-center">Jam Selesai</th>
                                   <th class="text-center">Tanggal Acara</th>
@@ -30,7 +29,6 @@
                               <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Nama Kegiatan</th>
-                                <th class="text-center">Kode Kegiatan</th>
                                 <th class="text-center">Jam Mulai</th>
                                 <th class="text-center">Jam Selesai</th>
                                 <th class="text-center">Tanggal Acara</th>
@@ -42,7 +40,6 @@
                               <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td class="text-center">{{ $item->nama }}</td>
-                                <td class="text-center">{{ $item->kode_kegiatan }}</td>
                                 <td class="text-center">{{ $item->jam_mulai }}</td>
                                 <td class="text-center">{{ $item->jam_selesai }}</td>
                                 <td class="text-center">{{ $item->tanggal_kegiatan }}

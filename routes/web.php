@@ -66,7 +66,7 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','web'])->group(fu
 
     
 
-    Route::resource('anggota', 'AnggotaController');
+    Route::resource('anggota', 'AnggotaController')->parameters(['anggota'=>'nim']);
     Route::resource('kegiatan', 'KegiatanController');
     Route::resource('kehadiran', 'KehadiranController');
     Route::resource('carousel', 'CarouselController');

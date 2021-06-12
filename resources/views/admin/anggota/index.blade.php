@@ -45,12 +45,12 @@
                                 <td class="text-center">{{ $item->jabatan }}</td>
                                 <td class="text-center"><img style="width: 100px; height:100px;" src="{{ $item->picture }}" alt=""></td>
                                 <td>
-                                  <form method="POST" action="{{ route('anggota.destroy',$item->id) }}" class="form-inline d-flex justify-content-center">
+                                  <form method="POST" action="{{ route('anggota.destroy',$item->nim) }}" class="form-inline d-flex justify-content-center">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">Hapus</button>
-                                    <a href="{{ route('anggota.show',$item->id) }}" class="btn btn-success ml-2">Detail</i></a>
-                                    <a href="{{ route('anggota.edit',$item->id) }}" class="btn btn-info ml-2"> Edit</a>
+                                    <a href="{{ route('anggota.show',$item->nim) }}" class="btn btn-success ml-2">Detail</i></a>
+                                    <a href="{{ route('anggota.edit',$item->nim) }}" class="btn btn-info ml-2"> Edit</a>
                                   </form>
                                 </td>
                               </tr>

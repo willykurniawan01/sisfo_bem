@@ -47,7 +47,6 @@ class AnggotaController extends Controller
             'jabatan'=>'required|string',
             'jenis_kelamin'=>'required|string',
             'picture'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'imei'=>'required|unique:anggotas',
             'no_hp'=>'required|numeric',
             'email'=>'required|unique:anggotas|email'
         ]);
@@ -61,7 +60,6 @@ class AnggotaController extends Controller
             'jabatan'=>$request->jabatan,
             'jenis_kelamin'=>$request->jenis_kelamin,
             'picture'=>URL::to('images').'/'.$imageName,
-            'imei'=>$request->imei,
             'no_hp'=>$request->no_hp,
             'email'=>$request->email
         ]);
@@ -76,9 +74,9 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nim)
     {
-        return view('admin.anggota.show',['anggota'=>Anggota::findOrFail($id)]);
+        return view('admin.anggota.show',['anggota'=>Anggota::findOrFail($nim)]);
     }
 
     /**
@@ -87,9 +85,9 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nim)
     {
-        return view('admin.anggota.edit',['anggota'=>Anggota::findOrFail($id)]);
+        return view('admin.anggota.edit',['anggota'=>Anggota::findOrFail($nim)]);
     }
 
     /**
@@ -99,9 +97,9 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nim)
     {
-        $anggota=Anggota::findOrFail($id);
+        $anggota=Anggota::findOrFail($nim);
         $picture=explode('/',$anggota->picture);
      
 
@@ -130,7 +128,7 @@ class AnggotaController extends Controller
                 'jabatan'=>$request->jabatan,
                 'jenis_kelamin'=>$request->jenis_kelamin,
                 'picture'=>URL::to('images').'/'.$imageName,
-                'imei'=>$request->imei,
+
                 'no_hp'=>$request->no_hp,
                 'email'=>$request->email
             ]);
@@ -149,14 +147,14 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($nim)
     {
-        $anggota=Anggota::findOrFail($id);
+        $anggota=Anggota::findOrFail($nim);
         $picture=explode('/',$anggota->picture);
       
         if(File::exists('images/'.$picture[4])){ 
         File::delete('images/'.$picture[4]);
-        Anggota::destroy($id);
+        Anggota::destroy($nim);
         }
         
         return redirect()->route('anggota.index')->with('success','Berhasil Menghapus Data Anggota!');

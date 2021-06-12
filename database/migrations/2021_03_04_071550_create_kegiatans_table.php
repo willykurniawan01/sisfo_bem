@@ -13,9 +13,8 @@ class CreateKegiatansTable extends Migration
      */
     public function up()
     {
-        Schema::create('kegiatan', function (Blueprint $table) {
+        Schema::create('kegiatans', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_kegiatan')->unique();
             $table->string('nama');
             $table->string('jam_mulai');
             $table->string('jam_selesai');

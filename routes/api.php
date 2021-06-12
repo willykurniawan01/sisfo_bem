@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Public Routes
 Route::namespace('Api')->group(function () {
     Route::post('/login', 'AuthController@Login');
     Route::post('/register', 'AuthController@Register');
 });
 
+//Private Route
 Route::middleware('auth:sanctum')->namespace('Api')->group(function () {   
     Route::resource('anggota', 'AnggotaController');
-    Route::resource('kehadiran', 'KehadiranController');
+    // Route::resource('kehadiran', 'KehadiranController');
     Route::resource('kegiatan', 'KegiatanController');
 });

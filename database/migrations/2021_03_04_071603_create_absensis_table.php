@@ -17,7 +17,7 @@ class CreateAbsensisTable extends Migration
             $table->id();
             $table->string('imei');
             $table->unsignedBigInteger('kegiatan_id');
-            $table->foreign('kegiatan_id')->references('id')->on('kegiatan')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('kegiatan_id')->references('id')->on('kegiatans')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('keterangan');
             $table->string('waktu_absensi');
             $table->timestamps();

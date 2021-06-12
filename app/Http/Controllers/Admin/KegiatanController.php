@@ -37,7 +37,6 @@ class KegiatanController extends Controller
     public function store(Request $request)
     {
         $validation=$request->validate([
-            'kode_kegiatan'=>'required|unique:kegiatans',
             'nama'=>'required|string',
             'jam_mulai'=>'required',
             'jam_selesai'=>'required',
@@ -82,7 +81,6 @@ class KegiatanController extends Controller
         $kegiatan=Kegiatan::findOrFail($id);
 
         $validation=$request->validate([
-            'kode_kegiatan'=>'required',
             'nama'=>'required',
             'jam_mulai'=>'required',
             'jam_selesai'=>'required',
