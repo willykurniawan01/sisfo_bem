@@ -22,7 +22,7 @@
 
               <div class="col-12 col-md-3">
 
-                <div class="card mr-3" >
+                <div class="card mr-3 mb-5">
                   <img src="{{ $item->picture }}" style="height:200px;" class="card-img-top img-fluid" alt="...">
                   <div class="card-body text-center">
                     <button data-target="#deleteCarousel" data-whatever="{{ $item->id }}" data-toggle="modal" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

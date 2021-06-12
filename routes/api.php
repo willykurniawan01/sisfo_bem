@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('Api')->group(function () {
+    Route::post('/login', 'AuthController@Login');
+    Route::post('/register', 'AuthController@Register');
 });
 
-Route::namespace('Api')->group(function () {   
+Route::middleware('auth:sanctum')->namespace('Api')->group(function () {   
     Route::resource('anggota', 'AnggotaController');
-    // Route::resource('Kehadiran', 'KehadiranController');
+    Route::resource('kehadiran', 'KehadiranController');
+    Route::resource('kegiatan', 'KegiatanController');
 });
